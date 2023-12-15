@@ -1,7 +1,7 @@
 apiVersion: serving.knative.dev/v1
 kind: Service
 metadata:
-  name: website2
+  name: website
   namespace: jonasandersen-no
 spec:
   template:
