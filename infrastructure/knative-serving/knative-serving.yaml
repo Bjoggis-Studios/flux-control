@@ -13,7 +13,5 @@ spec:
     kourier:
       enabled: true
   config:
-    domain:
-      "knative.jonasandersen.no" : ""
     network:
       ingress-class: "kourier.ingress.networking.knative.dev"
