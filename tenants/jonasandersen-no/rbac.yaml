@@ -1,0 +1,33 @@
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  labels:
+    toolkit.fluxcd.io/tenant: jonasandersen-no
+  name: jonasandersen-no
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  labels:
+    toolkit.fluxcd.io/tenant: jonasandersen-no
+  name: jonasandersen-no
+  namespace: jonasandersen-no
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    toolkit.fluxcd.io/tenant: jonasandersen-no
+  name: gotk-reconciler
+  namespace: jonasandersen-no
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: cluster-admin
+subjects:
+  - kind: User
+    name: gotk:jonasandersen-no:reconciler
+  - kind: ServiceAccount
+    name: jonasandersen-no
+    namespace: jonasandersen-no
