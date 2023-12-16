@@ -7,7 +7,7 @@ spec:
   template:
     metadata:
       annotations:
-        autoscaling.knative.dev/activation-scale: "1"
+        autoscaling.knative.dev/activation-scale: "3"
         autoscaling.knative.dev/max-scale: "100"
         autoscaling.knative.dev/metric: "rps"
         autoscaling.knative.dev/target: "1"
