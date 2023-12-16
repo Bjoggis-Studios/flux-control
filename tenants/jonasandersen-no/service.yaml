@@ -16,6 +16,6 @@ spec:
       imagePullSecrets:
         - name: image-credentials
       containers:
-        - image: ghcr.io/notbjoggisatall/jonasandersen:0.0.3-SNAPSHOT
+        - image: ghcr.io/notbjoggisatall/jonasandersen:0.0.1-SNAPSHOT
           ports:
             - containerPort: 8080
