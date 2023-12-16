@@ -14,6 +14,6 @@ spec:
         autoscaling.knative.dev/window: "30s"
     spec:
       containers:
-        - image: ghcr.io/notbjoggisatall/jonasandersen-no:v0.0.1
+        - image: bjoggis/jonasandersen-no:v0.0.2
           ports:
             - containerPort: 8080
