@@ -69,4 +69,8 @@ data:
       service: http://kourier-internal.knative-serving.svc.cluster.local:80
       originRequest:
         httpHostHeader: website.jonasandersen-no.svc.cluster.local
+    - hostname: jonasandersen.no
+      service: http://kourier-internal.knative-serving.svc.cluster.local:80
+      originRequest:
+        httpHostHeader: website.jonasandersen-no.svc.cluster.local
     - service: http_status:404
