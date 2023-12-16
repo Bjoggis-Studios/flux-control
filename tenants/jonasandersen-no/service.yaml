@@ -13,8 +13,6 @@ spec:
         autoscaling.knative.dev/target: "1"
         autoscaling.knative.dev/window: "30s"
     spec:
-      imagePullSecrets:
-        - name: image-credentials
       containers:
         - image: ghcr.io/notbjoggisatall/jonasandersen-no:v0.0.1
           ports:
