@@ -9,6 +9,10 @@ Set that value as a environment variable before running the kustomize build comm
 kubectl create secret generic tunnel-credentials --from-file=credentials.json=/home/$USER/.cloudflared/<tunnel-id>.json -o yaml --dry-run=client
 ```
 
+```bash
+kubectl create secret generic config-server-credentials -n jonasandersen-no --from-literal=username=$SPRING_CLOUD_CONFIG_USERNAME --from-literal=password=$SPRING_CLOUD_CONFIG_PASSWORD
+```
+
 Remember to also run tenants env files.
 
 ```bash
