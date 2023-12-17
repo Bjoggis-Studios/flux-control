@@ -6,7 +6,7 @@
 The following command will create a value that contains the json data
 Set that value as a environment variable before running the kustomize build command.
 ```bash
-kubectl create secret generic tunnel-credentials --from-file=credentials.json=/home/<username>/.cloudflared/<tunnel-id>.json -o yaml --dry-run=client
+kubectl create secret generic tunnel-credentials --from-file=credentials.json=/home/$USER/.cloudflared/<tunnel-id>.json -o yaml --dry-run=client
 ```
 
 Remember to also run tenants env files.
