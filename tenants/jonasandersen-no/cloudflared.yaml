@@ -60,7 +60,7 @@ metadata:
   namespace: jonasandersen-no
 data:
   config.yaml: |
-    tunnel: 4242d649-72f3-4f7c-994e-4b22a8e3c644
+    tunnel: 0bccac59-aed1-4b8e-9686-7e40dd2d51c1
     credentials-file: /etc/cloudflared/creds/credentials.json
     metrics: 0.0.0.0:2000
     no-autoupdate: true
