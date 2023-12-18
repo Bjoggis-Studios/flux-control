@@ -60,15 +60,11 @@ metadata:
   namespace: jonasandersen-no
 data:
   config.yaml: |
-    tunnel: 0bccac59-aed1-4b8e-9686-7e40dd2d51c1
+    tunnel: 4242d649-72f3-4f7c-994e-4b22a8e3c644
     credentials-file: /etc/cloudflared/creds/credentials.json
     metrics: 0.0.0.0:2000
     no-autoupdate: true
     ingress:
-    - hostname: test.jonasandersen.no
-      service: http://kourier-internal.knative-serving.svc.cluster.local:80
-      originRequest:
-        httpHostHeader: website.jonasandersen-no.svc.cluster.local
     - hostname: jonasandersen.no
       service: http://kourier-internal.knative-serving.svc.cluster.local:80
       originRequest:
