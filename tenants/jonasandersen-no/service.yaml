@@ -37,3 +37,10 @@ spec:
         - image: bjoggis/jonasandersen-gateway:v0.0.3
           ports:
             - containerPort: 8080
+          env:
+            - name: logging.level.org.springframework.http.server.reactive
+              value: TRACE
+            - name: logging.level.org.springframework.web.reactive
+              value: TRACE
+            - name: logging.level.org.springframework.boot.autoconfigure.web
+              value: TRACE

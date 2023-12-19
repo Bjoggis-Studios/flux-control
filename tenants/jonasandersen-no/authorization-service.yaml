@@ -30,9 +30,3 @@ spec:
                 secretKeyRef:
                   name: config-server-credentials
                   key: password
-            - name: logging.level.org.springframework.http.server.reactive
-              value: TRACE
-            - name: logging.level.org.springframework.web.reactive
-              value: TRACE
-            - name: logging.level.org.springframework.boot.autoconfigure.web
-              value: TRACE
