@@ -22,6 +22,13 @@ spec:
             - --config
             - /etc/cloudflared/config/config.yaml
             - run
+          resources:
+            limits:
+              cpu: "0.2"
+              memory: "256Mi"
+            requests:
+              cpu: "0.1"
+              memory: "128Mi"
           livenessProbe:
             httpGet:
               path: /ready
@@ -60,7 +67,7 @@ metadata:
   namespace: jonasandersen-no
 data:
   config.yaml: |
-    tunnel: 4242d649-72f3-4f7c-994e-4b22a8e3c644
+    tunnel: 3e418e61-4e7a-4002-b0d7-6854d1dcf734
     credentials-file: /etc/cloudflared/creds/credentials.json
     metrics: 0.0.0.0:2000
     no-autoupdate: true
@@ -68,7 +75,7 @@ data:
     - hostname: jonasandersen.no
       service: http://kourier-internal.knative-serving.svc.cluster.local:80
       originRequest:
-        httpHostHeader: gateway.jonasandersen-no.svc.cluster.local
+        httpHostHeader: website.jonasandersen-no.svc.cluster.local
     - hostname: login.jonasandersen.no
       service: http://kourier-internal.knative-serving.svc.cluster.local:80
       originRequest:
