@@ -14,7 +14,7 @@ To recreate a cluster you will need to delete it first with the command
 k3d cluster delete juice
 ```
 
-### The commands below is ranin the setup function, but kept here for easy access.
+### The commands below is ran in the setup function, but kept here for easy access.
 
 The following command will create a value that contains the json data
 Set that value as a environment variable before running the kustomize build command.
