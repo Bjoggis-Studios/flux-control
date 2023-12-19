@@ -8,6 +8,12 @@ chmod +x setup
 
 ./setup
 ```
+
+To recreate a cluster you will need to delete it first with the command
+```bash
+k3d cluster delete juice
+```
+
 ### The commands below is ranin the setup function, but kept here for easy access.
 
 The following command will create a value that contains the json data
