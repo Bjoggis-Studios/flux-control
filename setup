@@ -1,0 +1,17 @@
+#!/bin/bash
+
+# Check if the cluster exists
+if k3d cluster list | grep -q "juice"; then
+    echo "Cluster 'juice' already exists. Please delete the cluster before running setup again."
+    echo "Run 'k3d cluster delete juice' to delete the cluster"
+    exit 1
+fi
+
+k3d cluster create juice --k3s-arg "--disable=traefik@server:0"
+echo "Cluster created"
+
+echo "Applying secrets"
+kustomize build ./env/jonasandersen-no | envsubst | kubectl apply -f -
+
+echo "Running flux bootstrap"
+flux bootstrap github --owner=$GITHUB_ORG --repository=flux-control --branch=main --path=./clusters/$(kubectx -c)

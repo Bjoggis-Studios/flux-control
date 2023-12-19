@@ -2,6 +2,13 @@
 
 ## juice-docker-desktop
 
+Tip: You can run the setup script to automatically setup the cluster with correct secrets and a bootstrapped flux.
+```bash
+chmod +x setup
+
+./setup
+```
+### The commands below is ranin the setup function, but kept here for easy access.
 
 The following command will create a value that contains the json data
 Set that value as a environment variable before running the kustomize build command.
