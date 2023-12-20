@@ -47,6 +47,6 @@ spec:
             - name: logging.level.reactor.netty
               value: TRACE
             - name: spring.cloud.gateway.httpserver.wiretap
-              value: true
+              value: 'true'
             - name: spring.cloud.gateway.httpclient.wiretap
-              value: true
+              value: 'true'
