@@ -14,6 +14,6 @@ echo "Applying secrets"
 kustomize build ./env/jonasandersen-no | envsubst | kubectl apply -f -
 
 echo "Running flux bootstrap"
-flux bootstrap github --owner=$GITHUB_ORG --repository=flux-control --branch=main --path=./clusters/$(kubectx -c)
+flux bootstrap github --owner=$GITHUB_ORG --repository=flux-control --branch=main --path=./clusters/$(kubectx -c) --token-auth
 
 echo "Completed setup"
