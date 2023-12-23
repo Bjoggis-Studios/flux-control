@@ -10,7 +10,7 @@ spec:
         autoscaling.knative.dev/activation-scale: "3"
         autoscaling.knative.dev/max-scale: "100"
         autoscaling.knative.dev/metric: "rps"
-        autoscaling.knative.dev/target: "1"
+        autoscaling.knative.dev/target: "10"
         autoscaling.knative.dev/window: "30s"
     spec:
       containers:
@@ -30,8 +30,8 @@ spec:
         autoscaling.knative.dev/activation-scale: "3"
         autoscaling.knative.dev/max-scale: "100"
         autoscaling.knative.dev/metric: "rps"
-        autoscaling.knative.dev/target: "1"
-        autoscaling.knative.dev/window: "30s"
+        autoscaling.knative.dev/target: "10"
+        autoscaling.knative.dev/window: "5m"
     spec:
       containers:
         - image: bjoggis/jonasandersen-gateway:v0.0.5
