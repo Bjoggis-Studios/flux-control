@@ -34,6 +34,6 @@ spec:
         autoscaling.knative.dev/window: "5m"
     spec:
       containers:
-        - image: bjoggis/jonasandersen-gateway:v0.0.5
+        - image: bjoggis/jonasandersen-gateway:v0.0.7
           ports:
             - containerPort: 8080
