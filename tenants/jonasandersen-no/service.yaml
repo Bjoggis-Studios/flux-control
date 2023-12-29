@@ -34,7 +34,7 @@ spec:
         autoscaling.knative.dev/window: "30s"
     spec:
       containers:
-        - image: bjoggis/linode4j:v0.0.1-SNAPSHOT-x86_64
+        - image: bjoggis/linode4j:v0.0.4
           ports:
             - containerPort: 8080
           env:
@@ -48,8 +48,6 @@ spec:
                 secretKeyRef:
                   name: config-server-credentials
                   key: password
-            - name: logging.level.org.springframework.web
-              value: DEBUG
 ---
 apiVersion: serving.knative.dev/v1
 kind: Service
