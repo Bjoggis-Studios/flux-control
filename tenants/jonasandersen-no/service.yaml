@@ -48,6 +48,8 @@ spec:
                 secretKeyRef:
                   name: config-server-credentials
                   key: password
+            - name: logging.level.org.springframework.web
+              value: DEBUG
 ---
 apiVersion: serving.knative.dev/v1
 kind: Service
