@@ -6,10 +6,10 @@ metadata:
 spec:
   dependsOn:
     - name: knative-serving
-  interval: 1m
+  interval: 30s
   path: ./tenants/jonasandersen-no
   prune: true
-  retryInterval: 2m0s
+  retryInterval: 1m
   serviceAccountName: kustomize-controller
   sourceRef:
     kind: GitRepository
