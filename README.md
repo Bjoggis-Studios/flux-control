@@ -45,3 +45,13 @@ flux bootstrap github \
 ```bash
 k3d cluster create juice --k3s-arg "--disable=traefik@server:0"
 ```
+
+
+## k3sup setup
+
+Setup a cluster with k3sup
+
+```bash
+export CONTROL_NODE_IP=<ip>
+k3sup install --ip $CONTROL_NODE_IP --user gollien --k3s-extra-args '--disable traefik' --merge --local-path ~/.kube/config --context cluster00 --ssh-key pi-cluster
+```
