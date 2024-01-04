@@ -15,3 +15,6 @@ spec:
   config:
     network:
       ingress-class: "kourier.ingress.networking.knative.dev"
+  registry:
+    override:
+      kourier-gateway: docker.io/thegrandpkizzle/envoy:1.25.2
