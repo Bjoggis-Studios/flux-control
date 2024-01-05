@@ -3,6 +3,7 @@ kind: Kustomization
 resources:
 - rbac.yaml
 - gateway-service.yaml
+- linode4j-service.yaml
 - service.yaml
 # - authorization-service.yaml
 - cloudflared.yaml

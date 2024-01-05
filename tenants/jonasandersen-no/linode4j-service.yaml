@@ -1,0 +1,29 @@
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  name: linode4j
+  namespace: jonasandersen-no
+spec:
+  template:
+    metadata:
+      annotations:
+        autoscaling.knative.dev/max-scale: "1"
+        autoscaling.knative.dev/metric: "rps"
+        autoscaling.knative.dev/target: "200"
+        autoscaling.knative.dev/window: "1m"
+    spec:
+      containers:
+        - image: bjoggis/linode4j:v0.0.8
+          ports:
+            - containerPort: 8080
+          env:
+            - name: SPRING_CLOUD_CONFIG_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: config-server-credentials
+                  key: username
+            - name: SPRING_CLOUD_CONFIG_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: config-server-credentials
+                  key: password
