@@ -27,11 +27,10 @@ spec:
   template:
     metadata:
       annotations:
-        autoscaling.knative.dev/activation-scale: "3"
-        autoscaling.knative.dev/max-scale: "100"
+        autoscaling.knative.dev/max-scale: "1"
         autoscaling.knative.dev/metric: "rps"
-        autoscaling.knative.dev/target: "10"
-        autoscaling.knative.dev/window: "30s"
+        autoscaling.knative.dev/target: "200"
+        autoscaling.knative.dev/window: "1m"
     spec:
       containers:
         - image: bjoggis/linode4j:v0.0.7
