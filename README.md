@@ -55,3 +55,8 @@ Setup a cluster with k3sup
 export CONTROL_NODE_IP=<ip>
 k3sup install --ip $CONTROL_NODE_IP --user gollien --k3s-extra-args '--disable traefik' --merge --local-path ~/.kube/config --context cluster00 --ssh-key pi-cluster
 ```
+
+If running from control node
+```bash
+k3sup install --ip 172.19.181.254 --user gollien --ssh-key /home/gollien/.ssh/id_ed25519 --k3s-extra-args '--disable traefik' --context cluster00  
+```
