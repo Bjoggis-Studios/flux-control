@@ -10,10 +10,10 @@ spec:
         autoscaling.knative.dev/max-scale: "1"
         autoscaling.knative.dev/metric: "rps"
         autoscaling.knative.dev/target: "200"
-        autoscaling.knative.dev/window: "1m"
+        autoscaling.knative.dev/window: "30m"
     spec:
       containers:
-        - image: bjoggis/linode4j:v0.0.12
+        - image: bjoggis/linode4j:v0.0.13
           ports:
             - containerPort: 8080
           env:
