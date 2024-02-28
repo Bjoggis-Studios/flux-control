@@ -19,9 +19,10 @@ metadata:
   namespace: grafana
 spec:
   interval: 5m
+  timeout: 15m
   chart:
     spec:
-      chart: grafana/k8s-monitoring
+      chart: k8s-monitoring
       sourceRef:
         kind: HelmRepository
         name: grafana
