@@ -1,0 +1,74 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: grafana
+---
+apiVersion: source.toolkit.fluxcd.io/v1beta2
+kind: HelmRepository
+metadata:
+  name: grafana
+  namespace: flux-system
+spec:
+  interval: 1m
+  url: https://grafana.github.io/helm-charts
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta2
+kind: HelmRelease
+metadata:
+  name: grafana
+  namespace: grafana
+spec:
+  interval: 5m
+  chart:
+    spec:
+      chart: grafana/k8s-monitoring
+      sourceRef:
+        kind: HelmRepository
+        name: grafana
+        namespace: flux-system
+      interval: 1m
+    valuesFrom:
+      - kind: Secret
+        name: grafana-credentials
+        valuesKey: secret
+        targetPath: externalServices.prometheus.basicAuth.password
+      - kind: Secret
+        name: grafana-credentials
+        valuesKey: secret
+        targetPath: externalServices.loki.basicAuth.password
+    values:
+      cluster:
+        name: cluster00
+      externalServices:
+        prometheus:
+          host: https://prometheus-prod-39-prod-eu-north-0.grafana.net
+          basicAuth:
+            username: "1433305"
+        loki:
+          host: https://logs-prod-025.grafana.net
+          basicAuth:
+            username: "815643"
+      metrics:
+        enabled: true
+        cost:
+          enabled: false
+        node-exporter:
+          enabled: true
+      logs:
+        enabled: true
+        pod_logs:
+          enabled: true
+        cluster_events:
+          enabled: true
+      traces:
+        enabled: false
+      opencost:
+        enabled: false
+      kube-state-metrics:
+        enabled: true
+      prometheus-node-exporter:
+        enabled: true
+      prometheus-operator-crds:
+        enabled: true
+      grafana-agent: { }
+      grafana-agent-logs: { }
