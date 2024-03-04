@@ -7,3 +7,4 @@ resources:
   - service.yaml
   - admin-service.yaml
   - cloudflared.yaml
+  - mono.yaml

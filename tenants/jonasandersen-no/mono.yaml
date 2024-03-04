@@ -1,0 +1,29 @@
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  name: mono
+  namespace: jonasandersen-no
+spec:
+  template:
+    metadata:
+      annotations:
+        autoscaling.knative.dev/max-scale: "1"
+        autoscaling.knative.dev/metric: "rps"
+        autoscaling.knative.dev/target: "200"
+        autoscaling.knative.dev/window: "60m"
+    spec:
+      containers:
+        - image: bjoggis/mono:v0.0.0
+          ports:
+            - containerPort: 8080
+          env:
+            - name: SPRING_CLOUD_CONFIG_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: config-server-credentials
+                  key: username
+            - name: SPRING_CLOUD_CONFIG_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: config-server-credentials
+                  key: password
