@@ -28,6 +28,7 @@ kubectl create secret generic config-server-credentials -n jonasandersen-no --fr
 
 Remember to also run tenants env files.
 
+
 ```bash
 kustomize build ./env/jonasandersen-no | envsubst | kubectl apply -f -
 ```
