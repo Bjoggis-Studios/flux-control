@@ -7,7 +7,7 @@ spec:
   interval: 1m
   path: ./infrastructure/knative-serving
   prune: true
-  retryInterval: 2m0s
+  retryInterval: 1m0s
   sourceRef:
     kind: GitRepository
     name: flux-system
