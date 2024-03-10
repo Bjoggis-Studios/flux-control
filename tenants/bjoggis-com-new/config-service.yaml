@@ -1,7 +1,7 @@
 apiVersion: serving.knative.dev/v1
 kind: Service
 metadata:
-  name: config-server
+  name: config-server2
   namespace: bjoggis-com
 spec:
   template:

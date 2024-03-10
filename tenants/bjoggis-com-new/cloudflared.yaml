@@ -68,5 +68,5 @@ data:
     - hostname: config.bjoggis.com
       service: http://kourier-internal.knative-serving.svc.cluster.local:80
       originRequest:
-        httpHostHeader: config-server.bjoggis-com.svc.cluster.local
+        httpHostHeader: config-server2.bjoggis-com.svc.cluster.local
     - service: http_status:404
