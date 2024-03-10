@@ -17,6 +17,8 @@ spec:
           ports:
             - containerPort: 8080
           env:
+            - name: JAVA_OPTS
+              value: "--enable-preview"
             - name: SPRING_CLOUD_CONFIG_USERNAME
               valueFrom:
                 secretKeyRef:
