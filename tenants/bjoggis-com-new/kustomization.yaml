@@ -3,4 +3,4 @@ kind: Kustomization
 resources:
 - rbac.yaml
 - cloudflared.yaml
-- config-service.yaml
+- admin-service.yaml
