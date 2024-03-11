@@ -60,7 +60,7 @@ metadata:
   namespace: bjoggis-com
 data:
   config.yaml: |
-    tunnel: d5188397-582f-436a-befb-c5c25266b322
+    tunnel: acfc71f4-9493-4566-9db6-f2412a63069c
     credentials-file: /etc/cloudflared/creds/credentials.json
     metrics: 0.0.0.0:2000
     no-autoupdate: true
