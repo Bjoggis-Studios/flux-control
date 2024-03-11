@@ -10,7 +10,7 @@ spec:
         autoscaling.knative.dev/max-scale: "3"
         autoscaling.knative.dev/metric: "rps"
         autoscaling.knative.dev/target: "200"
-        autoscaling.knative.dev/window: "6h"
+        autoscaling.knative.dev/window: "1h"
     spec:
       containers:
         - image: bjoggis/jonasandersen-admin:v0.0.0 # {"$imagepolicy": "flux-system:jonasandersen-admin"}
