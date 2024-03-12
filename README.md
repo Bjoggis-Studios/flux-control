@@ -33,6 +33,8 @@ Remember to also run tenants env files.
 kustomize build ./env/jonasandersen-no | envsubst | kubectl apply -f -
 ```
 
+## Flux
+
 ```bash
 flux bootstrap github \
   --owner=$GITHUB_USER \
@@ -40,6 +42,18 @@ flux bootstrap github \
   --branch=main \
   --path=./clusters/$(kubectx -c)
 ```
+
+Optional flux command that supports image updating
+```bash
+ flux bootstrap github \
+   --owner=Bjoggis-Studios \   
+   --repository=flux-control \
+   --branch=main \
+   --path=./clusters/$(kubectx -c) \
+   --components-extra image-reflector-controller,image-automation-controller \
+   --read-write-key
+```
+
 
 ## k3d setup
 
