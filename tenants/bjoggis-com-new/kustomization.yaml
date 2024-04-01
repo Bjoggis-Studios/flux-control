@@ -5,3 +5,5 @@ resources:
 - admin-service-image.yml
 - cloudflared.yaml
 - admin-service.yaml
+- authorization-server/authorization-server-image.yaml
+- authorization-server/authorization-server.yaml
