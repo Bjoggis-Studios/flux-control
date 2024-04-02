@@ -5,3 +5,4 @@ resources:
   - cloudflared.yaml
   - gateway-service.yaml
   - main-website.yaml
+  - authorization-service.yaml
