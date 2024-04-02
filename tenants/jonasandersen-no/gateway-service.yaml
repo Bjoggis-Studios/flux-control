@@ -1,20 +1,18 @@
-apiVersion: apps/v1
-kind: Deployment
+apiVersion: serving.knative.dev/v1
+kind: Service
 metadata:
   name: gateway
   namespace: jonasandersen-no
 spec:
-  selector:
-    matchLabels:
-      app: gateway
-  replicas: 1
   template:
     metadata:
-      labels:
-        app: gateway
+      annotations:
+        autoscaling.knative.dev/min-scale: "1"
+        autoscaling.knative.dev/max-scale: "3"
+        autoscaling.knative.dev/metric: "rps"
+        autoscaling.knative.dev/target: "200"
     spec:
       containers:
-        - name: gateway
-          image: bjoggis/jonasandersen-gateway:v0.0.14
+        - image: bjoggis/jonasandersen-gateway:v0.0.14
           ports:
             - containerPort: 8080
