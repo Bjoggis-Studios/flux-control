@@ -18,7 +18,7 @@ spec:
             - containerPort: 8899
           env:
             - name: SPRING_PROFILES_ACTIVE
-              value: prod
+              value: default
             - name: SPRING_CLOUD_CONFIG_USERNAME
               valueFrom:
                 secretKeyRef:
