@@ -7,7 +7,7 @@ spec:
   dependsOn:
     - name: knative-serving
   interval: 30s
-  path: ./tenants/jonasandersen-no
+  path: ./tenants/jonasandersen-no-old
   prune: true
   retryInterval: 1m
   serviceAccountName: kustomize-controller
