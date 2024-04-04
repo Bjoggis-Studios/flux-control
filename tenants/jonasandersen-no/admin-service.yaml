@@ -25,9 +25,9 @@ spec:
               valueFrom:
                 secretKeyRef:
                   name: config-server-credentials
-                  key: security_username
+                  key: username
             - name: SPRING_CLOUD_CONFIG_PASSWORD
               valueFrom:
                 secretKeyRef:
                   name: config-server-credentials
-                  key: security_password
+                  key: password
