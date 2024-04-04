@@ -1,24 +1,3 @@
-apiVersion: image.toolkit.fluxcd.io/v1beta2
-kind: ImageRepository
-metadata:
-  name: jonasandersen-admin
-  namespace: flux-system
-spec:
-  image: bjoggis/jonasandersen-admin
-  interval: 5m
----
-apiVersion: image.toolkit.fluxcd.io/v1beta2
-kind: ImagePolicy
-metadata:
-  name: jonasandersen-admin
-  namespace: flux-system
-spec:
-  imageRepositoryRef:
-    name: jonasandersen-admin
-  policy:
-    semver:
-      range: v0.0.x
----
 apiVersion: image.toolkit.fluxcd.io/v1beta1
 kind: ImageUpdateAutomation
 metadata:
@@ -41,5 +20,5 @@ spec:
     push:
       branch: main
   update:
-    path: ./tenants/bjoggis-com-new
+    path: ./tenants
     strategy: Setters

@@ -2,7 +2,7 @@ apiVersion: serving.knative.dev/v1
 kind: Service
 metadata:
   name: admin
-  namespace: bjoggis-com
+  namespace: jonasandersen-no
 spec:
   template:
     metadata:
