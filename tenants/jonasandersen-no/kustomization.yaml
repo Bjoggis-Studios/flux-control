@@ -7,3 +7,5 @@ resources:
   - main-website.yaml
   - authorization-service.yaml
   - linode4j-service.yaml
+  - admin-service-image.yml
+  - admin-service.yaml
