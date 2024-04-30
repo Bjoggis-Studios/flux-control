@@ -13,7 +13,7 @@ spec:
         autoscaling.knative.dev/window: "10m"
     spec:
       containers:
-        - image: bjoggis/jonasandersen-admin:v0.0.22 # {"$imagepolicy": "flux-system:jonasandersen-admin"}
+        - image: bjoggis/jonasandersen-admin:v0.0.24 # {"$imagepolicy": "flux-system:jonasandersen-admin"}
           ports:
             - containerPort: 8080
           env:
