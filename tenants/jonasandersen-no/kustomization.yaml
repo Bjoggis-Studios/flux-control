@@ -9,3 +9,5 @@ resources:
   - linode4j-service.yaml
   - admin-service-image.yml
   - admin-service.yaml
+  - valorant-premier-bot-image.yml
+  - valorant-premier-bot.yaml

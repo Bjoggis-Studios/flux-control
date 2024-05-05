@@ -1,0 +1,20 @@
+apiVersion: image.toolkit.fluxcd.io/v1beta2
+kind: ImageRepository
+metadata:
+  name: valorant-premier-bot
+  namespace: flux-system
+spec:
+  image: bjoggis/valorant-premier-bot
+  interval: 5m
+---
+apiVersion: image.toolkit.fluxcd.io/v1beta2
+kind: ImagePolicy
+metadata:
+  name: valorant-premier-bot
+  namespace: flux-system
+spec:
+  imageRepositoryRef:
+    name: valorant-premier-bot
+  policy:
+    semver:
+      range: v0.0.x
