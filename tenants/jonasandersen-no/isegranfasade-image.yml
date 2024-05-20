@@ -1,0 +1,20 @@
+apiVersion: image.toolkit.fluxcd.io/v1beta2
+kind: ImageRepository
+metadata:
+  name: isegranfasade
+  namespace: flux-system
+spec:
+  image: theahat/isegranfasade
+  interval: 5m
+---
+apiVersion: image.toolkit.fluxcd.io/v1beta2
+kind: ImagePolicy
+metadata:
+  name: isegranfasade
+  namespace: flux-system
+spec:
+  imageRepositoryRef:
+    name: isegranfasade
+  policy:
+    semver:
+      range: v0.0.x

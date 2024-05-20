@@ -75,6 +75,10 @@ data:
         service: http://kourier-internal.knative-serving.svc.cluster.local:80
         originRequest:
           httpHostHeader: admin.jonasandersen-no.svc.cluster.local
+      - hostname: isegranfasade.jonasandersen.no
+        service: http://kourier-internal.knative-serving.svc.cluster.local:80
+        originRequest:
+          httpHostHeader: isegranfasade.jonasandersen-no.svc.cluster.local
       - hostname: auth.jonasandersen.no
         service: http://kourier-internal.knative-serving.svc.cluster.local:80
         originRequest:

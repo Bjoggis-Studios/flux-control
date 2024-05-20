@@ -1,0 +1,18 @@
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  name: isegranfasade
+  namespace: jonasandersen-no
+spec:
+  template:
+    metadata:
+      annotations:
+        autoscaling.knative.dev/max-scale: "3"
+        autoscaling.knative.dev/metric: "rps"
+        autoscaling.knative.dev/target: "200"
+        autoscaling.knative.dev/window: "10m"
+    spec:
+      containers:
+        - image: theahat/isegranfasade:v0.0.0 # {"$imagepolicy": "flux-system:isegranfasade"}
+          ports:
+            - containerPort: 8080
