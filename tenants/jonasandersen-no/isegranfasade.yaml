@@ -13,7 +13,7 @@ spec:
         autoscaling.knative.dev/window: "10m"
     spec:
       containers:
-        - image: theahat/isegranfasade:v0.0.1 # {"$imagepolicy": "flux-system:isegranfasade"}
+        - image: theahat/isegranfasade:v0.0.3 # {"$imagepolicy": "flux-system:isegranfasade"}
           ports:
             - containerPort: 8080
           env:
