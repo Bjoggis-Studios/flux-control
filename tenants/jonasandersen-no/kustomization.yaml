@@ -13,3 +13,5 @@ resources:
   - valorant-premier-bot.yaml
   - isegranfasade.yaml
   - isegranfasade-image.yaml
+  - spillhuset-bot.yaml
+  - spillhuset-bot-image.yml
