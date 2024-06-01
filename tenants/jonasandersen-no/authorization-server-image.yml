@@ -1,0 +1,20 @@
+apiVersion: image.toolkit.fluxcd.io/v1beta2
+kind: ImageRepository
+metadata:
+  name: authorization-server
+  namespace: flux-system
+spec:
+  image: bjoggis/authorization-server
+  interval: 5m
+---
+apiVersion: image.toolkit.fluxcd.io/v1beta2
+kind: ImagePolicy
+metadata:
+  name: authorization-server
+  namespace: flux-system
+spec:
+  imageRepositoryRef:
+    name: authorization-server
+  policy:
+    semver:
+      range: vx.y.z

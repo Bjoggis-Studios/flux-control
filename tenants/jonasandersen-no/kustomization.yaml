@@ -6,6 +6,7 @@ resources:
   - gateway-service.yaml
   - main-website.yaml
   - authorization-service.yaml
+  - authorization-server-image.yml
   - linode4j-service.yaml
   - admin-service-image.yml
   - admin-service.yaml
