@@ -2,7 +2,7 @@ apiVersion: serving.knative.dev/v1
 kind: Service
 metadata:
   name: admin
-  namespace: jonasandersen-no
+  namespace: jonasandersen-admin
 spec:
   template:
     metadata:
@@ -10,22 +10,30 @@ spec:
         autoscaling.knative.dev/max-scale: "3"
         autoscaling.knative.dev/metric: "rps"
         autoscaling.knative.dev/target: "200"
-        autoscaling.knative.dev/window: "30m"
+        autoscaling.knative.dev/window: "10m"
     spec:
       containers:
-        - image: bjoggis/jonasandersen-admin:v0.0.4
+        - image: bjoggis/jonasandersen-admin:v0.0.39 # {"$imagepolicy": "flux-system:jonasandersen-admin"}
+          resources:
+            requests:
+              memory: "512Mi"
+            limits:
+              memory: "1024Mi"
           ports:
             - containerPort: 8080
           env:
             - name: SPRING_PROFILES_ACTIVE
-              value: prod
+              valueFrom:
+                configMapKeyRef:
+                  name: spring-profiles
+                  key: spring_profiles_active
             - name: SPRING_CLOUD_CONFIG_USERNAME
               valueFrom:
                 secretKeyRef:
                   name: config-server-credentials
-                  key: security_username
+                  key: username
             - name: SPRING_CLOUD_CONFIG_PASSWORD
               valueFrom:
                 secretKeyRef:
                   name: config-server-credentials
-                  key: security_password
+                  key: password

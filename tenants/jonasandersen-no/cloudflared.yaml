@@ -71,10 +71,6 @@ data:
         service: http://kourier-internal.knative-serving.svc.cluster.local:80
         originRequest:
           httpHostHeader: gateway.jonasandersen-no.svc.cluster.local
-      - hostname: admin.jonasandersen.no
-        service: http://kourier-internal.knative-serving.svc.cluster.local:80
-        originRequest:
-          httpHostHeader: admin.jonasandersen-no.svc.cluster.local
       - hostname: spillhuset-api.jonasandersen.no
         service: http://kourier-internal.knative-serving.svc.cluster.local:80
         originRequest:

@@ -1,13 +1,13 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: jonasandersen-no-tenant
+  name: jonasandersen-admin-tenant
   namespace: flux-system
 spec:
   dependsOn:
     - name: knative-serving
   interval: 30s
-  path: ./tenants/jonasandersen-no
+  path: ./tenants/jonasandersen-admin
   prune: true
   retryInterval: 1m
   serviceAccountName: kustomize-controller

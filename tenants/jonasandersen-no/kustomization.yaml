@@ -8,7 +8,5 @@ resources:
   - authorization-service.yaml
   - authorization-server-image.yml
   - linode4j-service.yaml
-  - admin-service-image.yml
-  - admin-service.yaml
   - spillhuset-bot.yaml
   - spillhuset-bot-image.yml
