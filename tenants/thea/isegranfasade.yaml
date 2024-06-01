@@ -14,6 +14,11 @@ spec:
     spec:
       containers:
         - image: theahat/isegranfasade:v0.0.4 # {"$imagepolicy": "flux-system:isegranfasade"}
+          resources:
+            requests:
+              memory: "512Mi"
+            limits:
+              memory: "1024Mi"
           ports:
             - containerPort: 8080
           env:
