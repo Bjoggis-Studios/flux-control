@@ -75,3 +75,18 @@ If running from control node
 ```bash
 k3sup install --ip 172.19.181.254 --user gollien --ssh-key /home/gollien/.ssh/id_ed25519 --k3s-extra-args '--disable traefik' --context cluster00  
 ```
+
+
+# Cloudflare tunnel
+```bash
+cloudflared tunnel create <NAME>
+```
+
+Take credential file from cloudflare and transform it to a 
+
+Example to create secret from credentials file.
+
+Put the value of the single data entry in 1Password and depend on it in .envrc
+```bash
+kubectl create secret generic database-credentials --dry-run=client --output=yaml --from-file .cloudflared/83a81522-daed-4722-838e-e261fb258769.json
+```
