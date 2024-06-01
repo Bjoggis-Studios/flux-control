@@ -20,7 +20,7 @@ spec:
             - name: SPRING_PROFILES_ACTIVE
               valueFrom:
                 configMapKeyRef:
-                  name: spring_profiles
+                  name: spring-profiles
                   key: spring_profiles_active
             - name: SPRING_CLOUD_CONFIG_USERNAME
               valueFrom:
