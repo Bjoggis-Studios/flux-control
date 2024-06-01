@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: spring_profiles
+  name: spring-profiles
   namespace: jonasandersen-no
 data:
   spring_profiles_active: "prod, cluster20"
