@@ -18,7 +18,10 @@ spec:
             - containerPort: 8080
           env:
             - name: SPRING_PROFILES_ACTIVE
-              value: prod
+              valueFrom:
+                configMapKeyRef:
+                  name: spring_profiles
+                  key: spring_profiles_active
             - name: SPRING_CLOUD_CONFIG_USERNAME
               valueFrom:
                 secretKeyRef:

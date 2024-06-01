@@ -1,0 +1,6 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+  - rbac.yaml
+  - valorant-premier-bot-image.yml
+  - valorant-premier-bot.yaml

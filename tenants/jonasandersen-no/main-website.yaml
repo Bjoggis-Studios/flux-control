@@ -17,3 +17,9 @@ spec:
         - image: bjoggis/jonasandersen-no:v0.0.7
           ports:
             - containerPort: 8080
+          env:
+            - name: SPRING_PROFILES_ACTIVE
+              valueFrom:
+                configMapKeyRef:
+                  name: spring_profiles
+                  key: spring_profiles_active
