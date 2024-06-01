@@ -17,4 +17,4 @@ spec:
     name: authorization-server
   policy:
     semver:
-      range: vx.y.z
+      range: v1.4.x
