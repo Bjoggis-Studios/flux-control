@@ -13,7 +13,7 @@ spec:
         autoscaling.knative.dev/window: "10m"
     spec:
       containers:
-        - image: bjoggis/jonasandersen-admin:v0.0.43 # {"$imagepolicy": "flux-system:jonasandersen-admin"}
+        - image: bjoggis/jonasandersen-admin:v0.0.44 # {"$imagepolicy": "flux-system:jonasandersen-admin"}
           resources:
             requests:
               memory: "512Mi"
