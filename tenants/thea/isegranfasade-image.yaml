@@ -17,4 +17,4 @@ spec:
     name: isegranfasade
   policy:
     semver:
-      range: v0.0.x
+      range: v0.0.x-fork
