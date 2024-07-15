@@ -4,7 +4,7 @@ metadata:
   name: isegranfasade
   namespace: flux-system
 spec:
-  image: theahat/isegranfasade
+  image: bjoggis/isegranfasade
   interval: 5m
 ---
 apiVersion: image.toolkit.fluxcd.io/v1beta2
