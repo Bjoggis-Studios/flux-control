@@ -3,7 +3,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: cloudflared
-  namespace: jonasandersen-no
+  namespace: jonasandersen-website
 spec:
   selector:
     matchLabels:
@@ -59,7 +59,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: cloudflared
-  namespace: jonasandersen-no
+  namespace: jonasandersen-website
 data:
   config.yaml: |
     tunnel: 3feb3a58-8699-4ab3-acf3-6ad4f9eb4ae5
@@ -70,9 +70,9 @@ data:
       - hostname: jonasandersen.no
         service: http://kourier-internal.knative-serving.svc.cluster.local:80
         originRequest:
-          httpHostHeader: website.jonasandersen-no.svc.cluster.local
+          httpHostHeader: website.jonasandersen-website.svc.cluster.local
       - hostname: '*.jonasandersen.no'
         service: http://kourier-internal.knative-serving.svc.cluster.local:80
         originRequest:
-          httpHostHeader: website.jonasandersen-no.svc.cluster.local
+          httpHostHeader: website.jonasandersen-website.svc.cluster.local
       - service: http_status:404

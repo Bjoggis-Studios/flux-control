@@ -1,7 +1,7 @@
 apiVersion: image.toolkit.fluxcd.io/v1beta2
 kind: ImageRepository
 metadata:
-  name: jonasandersen-no
+  name: jonasandersen-website
   namespace: flux-system
 spec:
   image: bjoggis/jonasandersen-no
@@ -10,7 +10,7 @@ spec:
 apiVersion: image.toolkit.fluxcd.io/v1beta2
 kind: ImagePolicy
 metadata:
-  name: jonasandersen-no
+  name: jonasandersen-website
   namespace: flux-system
 spec:
   imageRepositoryRef:
