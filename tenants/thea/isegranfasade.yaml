@@ -13,7 +13,7 @@ spec:
         autoscaling.knative.dev/window: "10m"
     spec:
       containers:
-        - image: bjoggis/isegranfasade:v0.0.4 # {"$imagepolicy": "flux-system:isegranfasade"}
+        - image: bjoggis/isegranfasade:v0.0.7-fork # {"$imagepolicy": "flux-system:isegranfasade"}
           resources:
             requests:
               memory: "512Mi"
