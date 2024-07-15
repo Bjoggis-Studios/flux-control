@@ -22,10 +22,3 @@ metadata:
 data:
   spring_profiles_active: "prod, cluster10"
 ---
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: spring-profiles
-  namespace: valorant
-data:
-  spring_profiles_active: "prod, cluster10"
