@@ -44,4 +44,4 @@ metadata:
   name: spring-profiles
   namespace: jonasandersen-no
 data:
-  spring_profiles_active: "prod, cluster10"
+  spring_profiles_active: "prod, cluster20, cluster10"
