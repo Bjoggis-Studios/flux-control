@@ -37,3 +37,11 @@ metadata:
   namespace: spillhuset
 data:
   spring_profiles_active: "prod, cluster20"
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: spring-profiles
+  namespace: jonasandersen-no
+data:
+  spring_profiles_active: "prod, cluster10"
