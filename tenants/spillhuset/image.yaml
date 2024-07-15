@@ -1,0 +1,20 @@
+apiVersion: image.toolkit.fluxcd.io/v1beta2
+kind: ImageRepository
+metadata:
+  name: spillhuset-bot
+  namespace: flux-system
+spec:
+  image: bjoggis/spillhuset-bot
+  interval: 5m
+---
+apiVersion: image.toolkit.fluxcd.io/v1beta2
+kind: ImagePolicy
+metadata:
+  name: spillhuset-bot
+  namespace: flux-system
+spec:
+  imageRepositoryRef:
+    name: spillhuset-bot
+  policy:
+    semver:
+      range: v1.22.x
