@@ -13,7 +13,7 @@ spec:
         autoscaling.knative.dev/target: "200"
     spec:
       containers:
-        - image: bjoggis/spillhuset-bot:v1.22.1 # {"$imagepolicy": "flux-system:spillhuset-bot"}
+        - image: bjoggis/spillhuset-bot:v1.22.2 # {"$imagepolicy": "flux-system:spillhuset-bot"}
           ports:
             - containerPort: 8080
           env:
