@@ -15,11 +15,6 @@ spec:
     spec:
       containers:
         - image: bjoggis/jonasandersen-no:v0.0.8 # {"$imagepolicy": "flux-system:jonasandersen-no"}
-          resources:
-            requests:
-              memory: "512Mi"
-            limits:
-              memory: "512Mi"
           ports:
             - containerPort: 8080
           env:
