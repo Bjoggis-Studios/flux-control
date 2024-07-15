@@ -1,0 +1,20 @@
+apiVersion: image.toolkit.fluxcd.io/v1beta2
+kind: ImageRepository
+metadata:
+  name: jonasandersen-no
+  namespace: flux-system
+spec:
+  image: bjoggis/jonasandersen-no
+  interval: 5m
+---
+apiVersion: image.toolkit.fluxcd.io/v1beta2
+kind: ImagePolicy
+metadata:
+  name: jonasandersen-no
+  namespace: flux-system
+spec:
+  imageRepositoryRef:
+    name: jonasandersen-no
+  policy:
+    semver:
+      range: v0.0.x
