@@ -13,7 +13,7 @@ spec:
         autoscaling.knative.dev/window: "30m"
     spec:
       containers:
-        - image: bjoggis/linode4j:v0.0.16
+        - image: bjoggis/linode4j:v0.0.19
           ports:
             - containerPort: 8080
           env:
