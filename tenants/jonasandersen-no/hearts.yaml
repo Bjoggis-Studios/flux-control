@@ -13,6 +13,6 @@ spec:
         autoscaling.knative.dev/window: "30m"
     spec:
       containers:
-        - image: bjoggis/hearts:1
+        - image: bjoggis/hearts:2
           ports:
             - containerPort: 3000
