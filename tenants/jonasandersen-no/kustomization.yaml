@@ -7,3 +7,4 @@ resources:
   - authorization-service.yaml
   - authorization-server-image.yml
   - linode4j-service.yaml
+  - hearts.yaml
