@@ -74,11 +74,11 @@ data:
       - hostname: auth.jonasandersen.no
         service: http://kourier-internal.knative-serving.svc.cluster.local:80
         originRequest:
-          httpHostHeader: hearts.jonasandersen-no.svc.cluster.local
+          httpHostHeader: authorization.jonasandersen-no.svc.cluster.local
       - hostname: hearts.jonasandersen.no
         service: http://kourier-internal.knative-serving.svc.cluster.local:80
         originRequest:
-          httpHostHeader: authorization.jonasandersen-no.svc.cluster.local
+          httpHostHeader: hearts.jonasandersen-no.svc.cluster.local
       - hostname: "*.jonasandersen.no"
         service: http://kourier-internal.knative-serving.svc.cluster.local:80
         originRequest:
