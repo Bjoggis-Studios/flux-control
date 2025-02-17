@@ -13,7 +13,7 @@ spec:
         autoscaling.knative.dev/target: "200"
     spec:
       containers:
-        - image: bjoggis/jonasandersen-admin:v66-SNAPSHOT-x86_64 # {"$imagepolicy": "flux-system:jonasandersen-admin"}
+        - image: bjoggis/jonasandersen-admin:v0.0.64 # {"$imagepolicy": "flux-system:jonasandersen-admin"}
           ports:
             - containerPort: 8080
           env:
