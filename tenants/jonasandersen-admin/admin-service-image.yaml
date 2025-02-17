@@ -16,7 +16,7 @@ spec:
   imageRepositoryRef:
     name: jonasandersen-admin
   filterTags:
-    pattern: 'v\d+(?!\S)'
+    pattern: '.*v\d+(?!\S).*'
   policy:
     alphabetical:
       order: asc
