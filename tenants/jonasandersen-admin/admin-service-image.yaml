@@ -16,5 +16,5 @@ spec:
   imageRepositoryRef:
     name: jonasandersen-admin
   policy:
-    semver:
-      range: vx
+    alphabetical:
+      order: asc
