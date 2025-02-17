@@ -15,8 +15,6 @@ metadata:
 spec:
   imageRepositoryRef:
     name: jonasandersen-admin
-  filterTags:
-    pattern: "^(?!.*SNAPSHOT).+$"
   policy:
-    alphabetical:
+    numerical:
       order: asc
