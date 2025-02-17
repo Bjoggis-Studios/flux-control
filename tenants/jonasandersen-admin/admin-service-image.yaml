@@ -15,6 +15,8 @@ metadata:
 spec:
   imageRepositoryRef:
     name: jonasandersen-admin
+  filterTags:
+    pattern: "v\d+"
   policy:
-    numerical:
+    alphabetical:
       order: asc
