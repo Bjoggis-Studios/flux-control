@@ -35,6 +35,15 @@ kustomize build ./env/jonasandersen-no | envsubst | kubectl apply -f -
 
 ## Flux
 
+### Install
+```bash
+curl -s https://fluxcd.io/install.sh | sudo bash
+```
+To configure your shell to load flux bash completions add to your profile:
+```bash
+. <(flux completion bash)
+```
+
 ```bash
 flux bootstrap github \
   --owner=$GITHUB_USER \
