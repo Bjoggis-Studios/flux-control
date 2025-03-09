@@ -22,6 +22,7 @@ spec:
     spec:
       chart: grafana/alloy
       sourceRef:
+        kind: HelmRepository
         name: grafana-helm-chart
         namespace: grafana-alloy
   interval: 5m
