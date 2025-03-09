@@ -27,6 +27,11 @@ spec:
         namespace: grafana-alloy
   interval: 5m
   values:
-    configmap:
-      enabled: true
-      name: grafana-alloy-config
+    alloy:
+      configMap:
+        content: |-
+          // Write your Alloy config here:
+          logging {
+            level = "info"
+            format = "logfmt"
+          }
