@@ -4,7 +4,7 @@ metadata:
   name: grafana-alloy-config
   namespace: grafana-alloy
 data:
-  content: |
+  alloy.yaml: |
       logging {
         level = "info"
         format = "logfmt"
