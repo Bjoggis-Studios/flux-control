@@ -20,7 +20,7 @@ metadata:
 spec:
   chart:
     spec:
-      chart: grafana/alloy
+      chart: alloy
       sourceRef:
         kind: HelmRepository
         name: grafana-helm-chart
