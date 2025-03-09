@@ -26,3 +26,7 @@ spec:
         name: grafana-helm-chart
         namespace: grafana-alloy
   interval: 5m
+  values:
+    configmap:
+      enabled: true
+      name: grafana-alloy-config
