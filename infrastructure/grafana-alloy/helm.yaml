@@ -16,7 +16,7 @@ apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
   name: grafana-alloy
-  namespace: grafana
+  namespace: grafana-alloy
 spec:
   chart:
     spec:
