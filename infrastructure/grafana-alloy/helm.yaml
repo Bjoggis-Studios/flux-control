@@ -6,8 +6,22 @@ metadata:
 apiVersion: source.toolkit.fluxcd.io/v1
 kind: HelmRepository
 metadata:
-  name: grafana
+  name: grafana-helm-chart
   namespace: grafana-alloy
 spec:
   interval: 1m
   url: https://grafana.github.io/helm-charts
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: grafana-alloy
+  namespace: grafana
+spec:
+  chart:
+    spec:
+      chart: grafana/alloy
+      sourceRef:
+        name: grafana-helm-chart
+        namespace: grafana-alloy
+  interval: 5m
