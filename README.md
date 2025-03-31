@@ -63,6 +63,11 @@ Optional flux command that supports image updating
    --read-write-key
 ```
 
+### Update flux
+
+```bash
+flux install --components-extra image-reflector-controller,image-automation-controller --export > ./clusters/cluster20/flux-system/gotk-components.yaml
+```
 
 ## k3d setup
 
