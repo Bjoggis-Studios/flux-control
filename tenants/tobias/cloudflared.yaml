@@ -67,7 +67,7 @@ data:
     metrics: 0.0.0.0:2000
     no-autoupdate: true
     ingress:
-      - hostname: spillhuset-web.bjoggis.com
+      - hostname: spillhuset.bjoggis.com
         service: http://kourier-internal.knative-serving.svc.cluster.local:80
         originRequest:
           httpHostHeader: spillhuset-web.tobias.svc.cluster.local
