@@ -1,0 +1,18 @@
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  name: isegranfasade
+  namespace: tobias
+spec:
+  template:
+    metadata:
+      annotations:
+        autoscaling.knative.dev/max-scale: "3"
+        autoscaling.knative.dev/metric: "rps"
+        autoscaling.knative.dev/target: "200"
+        autoscaling.knative.dev/window: "10m"
+    spec:
+      containers:
+        - image: bjoggis/spillhuset-web:1
+          ports:
+            - containerPort: 80
