@@ -4,8 +4,6 @@ metadata:
   name: dashy
   namespace: flux-system
 spec:
-  dependsOn:
-    - name: knative-serving
   interval: 30s
   path: ./tenants/dashy
   prune: true
