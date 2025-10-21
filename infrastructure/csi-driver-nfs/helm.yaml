@@ -11,7 +11,7 @@ apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
   name: csi-driver-nfs
-  namespace: infrastructure
+  namespace: flux-system
 spec:
   interval: 5m
   timeout: 15m
