@@ -46,7 +46,7 @@ To configure your shell to load flux bash completions add to your profile:
 
 ```bash
 flux bootstrap github \
-  --owner=$GITHUB_USER \
+  --owner=Bjoggis-Studios \
   --repository=flux-control \
   --branch=main \
   --path=./clusters/$(kubectx -c)
