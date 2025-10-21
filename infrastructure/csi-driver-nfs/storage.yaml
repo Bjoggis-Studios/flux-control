@@ -9,5 +9,5 @@ parameters:
 reclaimPolicy: Retain
 volumeBindingMode: Immediate
 allowVolumeExpansion: true
-mountOptions:
-  - nfsvers=4.1
+#mountOptions:
+  #- nfsvers=4.1
