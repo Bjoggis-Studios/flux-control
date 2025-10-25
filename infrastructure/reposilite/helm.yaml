@@ -6,23 +6,9 @@ metadata:
 apiVersion: source.toolkit.fluxcd.io/v1
 kind: HelmRepository
 metadata:
-  name: reposilite-helm-chart
+  name: reposilite-helm-
+  chart
   namespace: reposilite
 spec:
   interval: 1m
   url: https://helm.reposilite.com/
----
-apiVersion: helm.toolkit.fluxcd.io/v2beta1
-kind: HelmRelease
-metadata:
-  name: reposilite
-  namespace: reposilite
-spec:
-  chart:
-    spec:
-      chart: reposilite
-      sourceRef:
-        kind: HelmRepository
-        name: reposilite-helm-chart
-        namespace: reposilite
-  interval: 1m
