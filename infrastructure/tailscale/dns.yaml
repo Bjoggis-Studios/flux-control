@@ -7,3 +7,13 @@ spec:
     image:
       repo: tailscale/k8s-nameserver
       tag: unstable
+---
+apiVersion: v1alpha1
+kind: ResolverConfig
+nameservers:
+  - address: 10.102.241.19
+searchDomains: # optional
+  domains:
+    - jonasandersen.dev
+    - ts.net
+  disableDefault: false
