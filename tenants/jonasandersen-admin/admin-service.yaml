@@ -26,3 +26,21 @@ spec:
             - name: SPRING_PROFILES_ACTIVE
               value: prod
           name: jonasandersen-admin
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: jonasandersen-admin-tailscale
+  namespace: jonasandersen-admin
+  annotations:
+    # Optional: Force a specific tailscale hostname
+    tailscale.com/hostname: "jonasandersen-admin"
+spec:
+  type: LoadBalancer
+  loadBalancerClass: tailscale.com/lb
+  selector:
+    app: jonasandersen-admin
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
