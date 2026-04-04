@@ -8,3 +8,5 @@ metadata:
 spec:
   externalName: placeholder   # any value - will be overwritten by operator
   type: ExternalName
+  ports:
+    - port: 3100
