@@ -1,19 +1,9 @@
-apiVersion: tailscale.com/v1alpha1
-kind: DNSConfig
+apiVersion: v1
+kind: Service
 metadata:
-  name: ts-dns
+  annotations:
+    tailscale.com/tailnet-fqdn: five.pancake-vibe.ts.net.
+  name: five   # service name
 spec:
-  nameserver:
-    image:
-      repo: tailscale/k8s-nameserver
-      tag: unstable
----
-apiVersion: v1alpha1
-kind: ResolverConfig
-nameservers:
-  - address: 10.102.241.19
-searchDomains: # optional
-  domains:
-    - jonasandersen.dev
-    - ts.net
-  disableDefault: false
+  externalName: placeholder   # any value - will be overwritten by operator
+  type: ExternalName
