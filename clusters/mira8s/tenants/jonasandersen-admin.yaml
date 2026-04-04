@@ -4,8 +4,8 @@ metadata:
   name: jonasandersen-admin-tenant
   namespace: flux-system
 spec:
-  dependsOn:
-    - name: knative-serving
+#  dependsOn:
+#    - name: knative-serving
   interval: 30s
   path: ./tenants/jonasandersen-admin
   prune: true
@@ -14,4 +14,4 @@ spec:
   sourceRef:
     kind: GitRepository
     name: flux-system
-  timeout: 5m
+  timeout: 3m
