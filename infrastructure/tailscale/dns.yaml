@@ -4,6 +4,7 @@ metadata:
   annotations:
     tailscale.com/tailnet-fqdn: five.pancake-vibe.ts.net.
   name: five   # service name
+  namespace: jonasandersen-admin
 spec:
   externalName: placeholder   # any value - will be overwritten by operator
   type: ExternalName
