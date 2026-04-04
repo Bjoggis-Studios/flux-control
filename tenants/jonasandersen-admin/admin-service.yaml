@@ -1,16 +1,17 @@
-apiVersion: serving.knative.dev/v1
-kind: Service
+apiVersion: apps/v1
+kind: Deployment
 metadata:
   name: admin
   namespace: jonasandersen-admin
 spec:
+  selector:
+    matchLabels:
+      app: jonasandersen-admin
+  replicas: 1
   template:
     metadata:
-      annotations:
-        autoscaling.knative.dev/min-scale: "1"
-        autoscaling.knative.dev/max-scale: "2"
-        autoscaling.knative.dev/metric: "rps"
-        autoscaling.knative.dev/target: "200"
+      labels:
+        app: jonasandersen-admin
     spec:
       containers:
         - image: bjoggis/jonasandersen-admin:v79 # {"$imagepolicy": "flux-system:jonasandersen-admin"}
@@ -37,3 +38,4 @@ spec:
                 secretKeyRef:
                   name: config-server-credentials
                   key: password
+          name: jonasandersen-admin
