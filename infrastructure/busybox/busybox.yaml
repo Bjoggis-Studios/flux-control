@@ -3,20 +3,29 @@ kind: Namespace
 metadata:
   name: busybox
 ---
-apiVersion: v1
-kind: Pod
+apiVersion: apps/v1
+kind: Deployment
 metadata:
   name: busybox1
   namespace: busybox
   labels:
     app: busybox1
-  annotations:
-    tailscale.com/proxy-class: default
 spec:
-  containers:
-    - image: busybox
-      command:
-        - sleep
-        - "3600"
-      name: busybox
-  restartPolicy: Always
+  replicas: 1
+  selector:
+    matchLabels:
+      app: busybox1
+  template:
+    metadata:
+      labels:
+        app: busybox1
+      annotations:
+        tailscale.com/proxy-class: default
+    spec:
+      containers:
+        - name: busybox
+          image: busybox
+          command:
+            - sleep
+            - "3600"
+      restartPolicy: Always
