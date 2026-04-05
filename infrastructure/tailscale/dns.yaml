@@ -3,7 +3,8 @@ kind: Service
 metadata:
   annotations:
     tailscale.com/tailnet-ip: 100.119.101.9
-  name: five   # service name
+  name: jonasandersen-admin   # service name
+  namespace: jonasandersen-admin
 spec:
   externalName: placeholder   # any value - will be overwritten by operator
   type: ExternalName
