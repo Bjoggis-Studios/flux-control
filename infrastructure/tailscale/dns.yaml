@@ -8,3 +8,7 @@ metadata:
 spec:
   externalName: placeholder   # any value - will be overwritten by operator
   type: ExternalName
+  ports:
+    - name: loki # Assuming 3100 is Loki
+      port: 3100
+      targetPort: 3100
