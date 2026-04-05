@@ -56,7 +56,7 @@ metadata:
 spec:
   selector:
     app: config-server
-  type: LoadBalancer
+  type: ClusterIP
   ports:
     - port: 8888
       targetPort: 8888
