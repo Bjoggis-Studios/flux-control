@@ -1,0 +1,74 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: config-server
+  namespace: common
+spec:
+  selector:
+    matchLabels:
+      app: config-server
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: config-server
+    spec:
+      containers:
+        - name: config-server
+          image: bjoggis/config-server:v8
+          ports:
+            - containerPort: 8888
+          # readinessProbe:
+          #   httpGet:
+          #     path: /actuator/health
+          #     port: 8888
+          env:
+            - name: ENCRYPT_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: config-server-encrypt-key
+                  key: password
+            - name: SPRING_CLOUD_CONFIG_JDBC_URL
+              valueFrom:
+                secretKeyRef:
+                  name: config-server-credentials
+                  key: jdbc-url
+            - name: SPRING_CLOUD_CONFIG_JDBC_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: config-server-credentials
+                  key: jdbc-username
+            - name: SPRING_CLOUD_CONFIG_JDBC_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: config-server-credentials
+                  key: jdbc-password
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: config-server-service
+  namespace: common
+spec:
+  selector:
+    app: config-server
+  type: LoadBalancer
+  ports:
+    - port: 8888
+      targetPort: 8888
+---
+apiVersion: onepassword.com/v1
+kind: OnePasswordItem
+metadata:
+  name: config-server-credentials
+  namespace: common
+spec:
+  itemPath: "vaults/dev/items/vyrmenydnfnugdest54k2bg764"
+---
+apiVersion: onepassword.com/v1
+kind: OnePasswordItem
+metadata:
+  name: config-server-encrypt-key
+  namespace: common
+spec:
+  itemPath: "vaults/dev/items/biovntdbcn33siro4gzw23t4cu"

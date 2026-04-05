@@ -37,7 +37,7 @@ metadata:
     tailscale.com/hostname: "jonasandersen-admin"
 spec:
   type: LoadBalancer
-  loadBalancerClass: tailscale.com/lb
+  loadBalancerClass: tailscale
   selector:
     app: jonasandersen-admin
   ports:
