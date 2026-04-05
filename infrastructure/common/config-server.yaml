@@ -25,6 +25,8 @@ spec:
           env:
             - name: SPRING_PROFILES_ACTIVE
               value: prod
+            - name: loki.url
+              value: 'http://five.tailscale.svc.cluster.local:3100/loki/api/v1/push'
             - name: ENCRYPT_KEY
               valueFrom:
                 secretKeyRef:
