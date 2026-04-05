@@ -10,6 +10,8 @@ metadata:
   namespace: busybox
   labels:
     app: busybox1
+  annotations:
+    tailscale.com/proxy-class: default
 spec:
   containers:
     - image: busybox
