@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: config-server
-          image: bjoggis/config-server:v8
+          image: bjoggis/config-server:v9
           ports:
             - containerPort: 8888
           # readinessProbe:
