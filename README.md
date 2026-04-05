@@ -90,6 +90,8 @@ If running from control node
 k3sup install --ip 172.19.181.254 --user gollien --ssh-key /home/gollien/.ssh/id_ed25519 --k3s-extra-args '--disable traefik' --context cluster00  
 ```
 
+# 1password
+https://developer.1password.com/docs/k8s/operator/?deployment-type=helm
 
 # Cloudflare tunnel
 ```bash
