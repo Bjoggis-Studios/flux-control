@@ -12,3 +12,11 @@ spec:
     - name: loki # Assuming 3100 is Loki
       port: 3100
       targetPort: 3100
+---
+apiVersion: tailscale.com/v1alpha1
+kind: ProxyGroup
+metadata:
+  name: ts-proxies
+spec:
+  type: egress
+  replicas: 3
