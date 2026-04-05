@@ -2,11 +2,8 @@ apiVersion: v1
 kind: Service
 metadata:
   annotations:
-    tailscale.com/tailnet-fqdn: five.pancake-vibe.ts.net.
+    tailscale.com/tailnet-ip: 100.119.101.9
   name: five   # service name
-  namespace: jonasandersen-admin
 spec:
   externalName: placeholder   # any value - will be overwritten by operator
   type: ExternalName
-  ports:
-    - port: 3100
