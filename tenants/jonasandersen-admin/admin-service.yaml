@@ -25,6 +25,8 @@ spec:
           env:
             - name: SPRING_PROFILES_ACTIVE
               value: prod
+            - name: SPRING_CONFIG_IMPORT
+              value: 'optional:configserver:http://config-server-service.common.svc.cluster.local:8888'
           name: jonasandersen-admin
 ---
 apiVersion: v1
