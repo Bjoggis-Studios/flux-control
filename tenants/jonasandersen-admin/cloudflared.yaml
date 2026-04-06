@@ -45,7 +45,7 @@ spec:
               valueFrom:
                 secretKeyRef:
                   name: tunnel-credentials
-                  key: credentials.json
+                  key: credential.json
 #      volumes:
 #        - name: creds
 #          secret:
