@@ -3,9 +3,3 @@ kind: Kustomization
 resources:
   - namespace.yaml
   - dns.yaml
-patches:
-  - path: coredns-patch.yaml
-    target:
-      kind: ConfigMap
-      name: coredns
-      namespace: kube-system
