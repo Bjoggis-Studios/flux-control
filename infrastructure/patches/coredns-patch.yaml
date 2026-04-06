@@ -32,7 +32,7 @@ data:
         reload
         loadbalance
     }
-    # Your Tailscale Addition
+    # This did not work I had to patch this manuallly with  kubectl edit configmap coredns -n kube-system
     ts.net {
         errors
         cache 30
