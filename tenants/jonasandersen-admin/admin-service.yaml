@@ -53,7 +53,7 @@ metadata:
 spec:
   defaultBackend:
     service:
-      name: jonasandersen-admin
+      name: jonasandersen-admin-service
       port:
         number: 8080
   ingressClassName: tailscale
