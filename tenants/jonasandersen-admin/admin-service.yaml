@@ -31,25 +31,17 @@ spec:
               value: 'http://five.tailscale.svc.cluster.local:3100/loki/api/v1/push'
           name: jonasandersen-admin
 ---
-apiVersion: v1
-kind: Service
+apiVersion: networking.k8s.io/v1
+kind: Ingress
 metadata:
-  name: jonasandersen-admin-tailscale
-  namespace: jonasandersen-admin
-  annotations:
-    # Optional: Force a specific tailscale hostname
-    tailscale.com/hostname: "jonasandersen-admin"
+  name: nginx
 spec:
-  type: LoadBalancer
-  loadBalancerClass: tailscale
-  selector:
-    app: jonasandersen-admin
-  ports:
-    - protocol: TCP
-      name: http
-      port: 80
-      targetPort: 8080
-    - protocol: TCP
-      name: https
-      port: 443
-      targetPort: 8080
+  defaultBackend:
+    service:
+      name: jonasandersen-admin
+      port:
+        number: 8080
+  ingressClassName: tailscale
+  tls:
+    - hosts:
+        - admin
