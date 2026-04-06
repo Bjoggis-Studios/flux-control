@@ -18,13 +18,11 @@ spec:
         - name: cloudflared
           image: cloudflare/cloudflared:2026.3.0
           args:
-            - cloudflared
             - tunnel
-            - --no-autoupdate
+            - --config
+            - /etc/cloudflared/config/config.yaml
             - --loglevel
             - debug
-            - --metrics
-            - 0.0.0.0:2000
             - run
           livenessProbe:
             httpGet:
