@@ -27,6 +27,8 @@ spec:
               value: prod
             - name: SPRING_CONFIG_IMPORT
               value: 'optional:configserver:http://config-server-service.common.svc.cluster.local:8888'
+            - name: loki.url
+              value: 'http://five.tailscale.svc.cluster.local:3100/loki/api/v1/push'
           name: jonasandersen-admin
 ---
 apiVersion: v1
