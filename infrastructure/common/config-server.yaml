@@ -61,6 +61,19 @@ spec:
     - port: 8888
       targetPort: 8888
 ---
+apiVersion: v1
+kind: Service
+metadata:
+  name: config-server-service-lb
+  namespace: common
+spec:
+  selector:
+    app: config-server
+  type: LoadBalancer
+  ports:
+    - port: 8888
+      targetPort: 8888
+---
 apiVersion: onepassword.com/v1
 kind: OnePasswordItem
 metadata:
