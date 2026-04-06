@@ -8,3 +8,36 @@ metadata:
 spec:
   externalName: placeholder   # any value - will be overwritten by operator
   type: ExternalName
+---
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    tailscale.com/tailnet-fqdn: mongodb-dev1.pancake-vibe.ts.net
+  name: mongodb-dev1
+  namespace: tailscale
+spec:
+  externalName: placeholder   # any value - will be overwritten by operator
+  type: ExternalName
+---
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    tailscale.com/tailnet-fqdn: mongodb-dev2.pancake-vibe.ts.net
+  name: mongodb-dev2
+  namespace: tailscale
+spec:
+  externalName: placeholder   # any value - will be overwritten by operator
+  type: ExternalName
+---
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    tailscale.com/tailnet-fqdn: mongodb-dev3.pancake-vibe.ts.net
+  name: mongodb-dev3
+  namespace: tailscale
+spec:
+  externalName: placeholder   # any value - will be overwritten by operator
+  type: ExternalName
