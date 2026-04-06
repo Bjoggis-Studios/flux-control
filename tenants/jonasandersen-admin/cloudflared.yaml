@@ -72,3 +72,11 @@ data:
         originRequest:
           httpHostHeader: admin.jonasandersen-admin.svc.cluster.local
       - service: http_status:404
+---
+apiVersion: onepassword.com/v1
+kind: OnePasswordItem
+metadata:
+  name: tunnel-credentials
+  namespace: jonasandersen-admin
+spec:
+  itemPath: "vaults/dev/items/6ed2qjr3f3ikvykdumk52foukm"

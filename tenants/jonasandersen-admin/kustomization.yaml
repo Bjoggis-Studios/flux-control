@@ -4,4 +4,3 @@ resources:
   - cloudflared.yaml
   - admin-service-image.yaml
   - admin-service.yaml
-  - test-secret.yaml
