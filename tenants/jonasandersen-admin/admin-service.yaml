@@ -31,6 +31,19 @@ spec:
               value: 'http://five.tailscale.svc.cluster.local:3100/loki/api/v1/push'
           name: jonasandersen-admin
 ---
+apiVersion: v1
+kind: Service
+metadata:
+  name: jonasandersen-admin-service
+spec:
+  ports:
+    - name: http
+      port: 8080
+      targetPort: 8080
+  type: ClusterIP
+  selector:
+    app: jonasandersen-admin
+---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
