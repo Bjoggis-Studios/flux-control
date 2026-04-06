@@ -17,3 +17,5 @@ metadata:
 spec:
   ipAddressPools:
     - main-pool # This MUST match the name in the IPAddressPool above
+  interfaces:
+    - eth0
