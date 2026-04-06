@@ -24,13 +24,13 @@ spec:
             - --loglevel
             - debug
             - run
-          livenessProbe:
-            httpGet:
-              path: /ready
-              port: 2000
-            failureThreshold: 1
-            initialDelaySeconds: 10
-            periodSeconds: 10
+#          livenessProbe:
+#            httpGet:
+#              path: /ready
+#              port: 2000
+#            failureThreshold: 1
+#            initialDelaySeconds: 10
+#            periodSeconds: 10
           volumeMounts:
             - name: config
               mountPath: /etc/cloudflared/config
