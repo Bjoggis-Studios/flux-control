@@ -38,6 +38,12 @@ spec:
             - name: creds
               mountPath: /etc/cloudflared/creds
               readOnly: true
+          env:
+            - name: TUNNEL_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: tunnel-credentials
+                  key: secret
       volumes:
         - name: creds
           secret:
@@ -63,7 +69,6 @@ metadata:
 data:
   config.yaml: |
     tunnel: 0296d760-cc19-49fe-8283-04311e2d40b6
-    credentials-file: /etc/cloudflared/creds/credentials.json
     metrics: 0.0.0.0:2000
     no-autoupdate: true
     ingress:
