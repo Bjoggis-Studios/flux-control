@@ -1,0 +1,44 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: tailscale-operator
+  namespace: tailscale
+spec:
+  interval: 15m
+  chart:
+    spec:
+      chart: tailscale-operator
+      version: '*' # Or specify a specific version
+      sourceRef:
+        kind: HelmRepository
+        name: tailscale
+        namespace: flux-system
+  install:
+    createNamespace: false
+    remediation:
+      retries: 3
+  upgrade:
+    remediation:
+      retries: 3
+  # Matches your --wait flag
+  values:
+    apiServerProxyConfig:
+      mode: "true"
+  valuesFrom:
+    - kind: Secret
+      name: tailscale-auth
+      # If your secret has the data under specific keys, map them:
+      targetPath: oauth.clientId
+      valuesKey: client
+    - kind: Secret
+      name: tailscale-auth
+      targetPath: oauth.clientSecret
+      valuesKey: secret
+---
+apiVersion: onepassword.com/v1
+kind: OnePasswordItem
+metadata:
+  name: tunnel-credentials
+  namespace: tailscale
+spec:
+  itemPath: "vaults/dev/items/6ed2qjr3f3ikvykdumk52foukm"
