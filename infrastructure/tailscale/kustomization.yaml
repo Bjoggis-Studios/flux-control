@@ -8,3 +8,4 @@ resources:
   - external-five.yaml
   - external-mongodb.yaml
   - connector.yaml
+  - nameserver.yaml

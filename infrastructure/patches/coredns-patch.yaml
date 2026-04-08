@@ -36,5 +36,5 @@ data:
     ts.net {
         errors
         cache 30
-        forward . 10.104.196.238
+        forward . 10.104.196.238 # find this IP in svc
     }
