@@ -14,7 +14,7 @@ spec:
         app: spillhuset-web
     spec:
       containers:
-        - image: bjoggis/spillhuset-web:1
+        - image: bjoggis/spillhuset-web:2
           name: spillhuset-web
           ports:
             - containerPort: 80
