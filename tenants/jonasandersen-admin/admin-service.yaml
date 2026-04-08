@@ -22,10 +22,10 @@ spec:
               memory: "1024Mi"
           ports:
             - containerPort: 8080
-          readinessProbe:
-            httpGet:
-              path: /actuator/health
-              port: 8080
+#          readinessProbe:
+#            httpGet:
+#              path: /actuator/health
+#              port: 8080
           env:
             - name: SPRING_PROFILES_ACTIVE
               value: prod
