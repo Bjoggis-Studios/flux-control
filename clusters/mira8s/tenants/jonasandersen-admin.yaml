@@ -4,8 +4,6 @@ metadata:
   name: jonasandersen-admin-tenant
   namespace: flux-system
 spec:
-  dependsOn:
-    - name: tailscale
   interval: 1m
   path: ./tenants/jonasandersen-admin
   prune: true
