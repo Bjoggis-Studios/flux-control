@@ -1,18 +1,31 @@
-apiVersion: serving.knative.dev/v1
-kind: Service
+apiVersion: apps/v1
+kind: Deployment
 metadata:
   name: spillhuset-web
   namespace: tobias
 spec:
+  selector:
+    matchLabels:
+      app: spillhuset-web
+  replicas: 1
   template:
-    metadata:
-      annotations:
-        autoscaling.knative.dev/max-scale: "3"
-        autoscaling.knative.dev/metric: "rps"
-        autoscaling.knative.dev/target: "200"
-        autoscaling.knative.dev/window: "10m"
     spec:
       containers:
         - image: bjoggis/spillhuset-web:1
+          name: spillhuset-web
           ports:
             - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: spillhuset-web-service
+  namespace: tobias
+spec:
+  ports:
+    - port: 80
+      name: http
+      targetPort: 80
+  type: ClusterIP
+  selector:
+    app: spillhuset-web

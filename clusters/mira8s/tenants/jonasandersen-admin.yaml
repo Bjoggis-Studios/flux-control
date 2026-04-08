@@ -4,9 +4,9 @@ metadata:
   name: jonasandersen-admin-tenant
   namespace: flux-system
 spec:
-#  dependsOn:
-#    - name: knative-serving
-  interval: 30s
+  dependsOn:
+    - name: tailscale
+  interval: 1m
   path: ./tenants/jonasandersen-admin
   prune: true
   retryInterval: 1m
