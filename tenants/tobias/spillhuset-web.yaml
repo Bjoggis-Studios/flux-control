@@ -9,6 +9,9 @@ spec:
       app: spillhuset-web
   replicas: 1
   template:
+    metadata:
+      labels:
+        app: spillhuset-web
     spec:
       containers:
         - image: bjoggis/spillhuset-web:1
