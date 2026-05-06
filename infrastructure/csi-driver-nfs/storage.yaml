@@ -4,8 +4,8 @@ metadata:
   name: nfs-csi
 provisioner: nfs.csi.k8s.io
 parameters:
-  server: 100.83.228.43
-  share: /mnt/storage/prod
+  server: 100.70.29.116
+  share: /prod-talos
 reclaimPolicy: Retain
 volumeBindingMode: Immediate
 allowVolumeExpansion: true
