@@ -6,5 +6,6 @@ resources:
   - helm-repo.yaml
   - helm-release.yaml
   - external-five.yaml
+  - external-qnas.yaml
   - connector.yaml
   - nameserver.yaml
