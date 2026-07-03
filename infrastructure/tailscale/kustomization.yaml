@@ -7,5 +7,6 @@ resources:
   - helm-release.yaml
   - external-five.yaml
   - external-qnas.yaml
+  - external-bgg-minecraft.yaml
   - connector.yaml
   - nameserver.yaml
