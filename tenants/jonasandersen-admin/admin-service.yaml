@@ -14,7 +14,7 @@ spec:
         app: jonasandersen-admin
     spec:
       containers:
-        - image: bjoggis/jonasandersen-admin:v84 # {"$imagepolicy": "flux-system:jonasandersen-admin"}
+        - image: bjoggis/jonasandersen-admin:v86 # {"$imagepolicy": "flux-system:jonasandersen-admin"}
           resources:
             requests:
               memory: "512Mi"
@@ -40,7 +40,6 @@ spec:
       volumes:
         - name: tmp-dir
           emptyDir: {}
-
 ---
 apiVersion: v1
 kind: Service
