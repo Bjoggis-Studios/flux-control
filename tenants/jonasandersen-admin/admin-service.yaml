@@ -34,6 +34,13 @@ spec:
             - name: loki.url
               value: 'http://five.tailscale.svc.cluster.local:3100/loki/api/v1/push'
           name: jonasandersen-admin
+          volumeMounts:
+            - mountPath: /tmp/
+              name: tmp-dir
+      volumes:
+        - name: tmp-dir
+          emptyDir: {}
+
 ---
 apiVersion: v1
 kind: Service
