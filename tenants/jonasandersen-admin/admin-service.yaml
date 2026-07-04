@@ -14,7 +14,7 @@ spec:
         app: jonasandersen-admin
     spec:
       containers:
-        - image: bjoggis/jonasandersen-admin:v86 # {"$imagepolicy": "flux-system:jonasandersen-admin"}
+        - image: bjoggis/jonasandersen-admin:v87 # {"$imagepolicy": "flux-system:jonasandersen-admin"}
           resources:
             requests:
               memory: "512Mi"
