@@ -19,7 +19,7 @@ spec:
             requests:
               memory: "512Mi"
             limits:
-              memory: "1024Mi"
+              memory: "512Mi"
           ports:
             - containerPort: 8080
               #          readinessProbe:
