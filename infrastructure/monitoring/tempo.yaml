@@ -47,6 +47,5 @@ spec:
             bucket: bucket01
             endpoint: qnas.tailscale.svc.cluster.local
             insecure: true
-            s3_force_path_style: true
           wal:
             path: /var/tempo/wal
