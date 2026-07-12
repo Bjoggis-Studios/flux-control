@@ -55,14 +55,14 @@ spec:
     server: qnas.tailscale.svc.cluster.local # Replace with your NAS IP
     path: /prod/talos/monitoring/tempo  # Replace with your NAS share path
 ---
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: tempo-nfs-pvc
-  namespace: monitoring
-spec:
-  accessModes:
-    - ReadWriteMany
-  resources:
-    requests:
-      storage: 100Gi
+#apiVersion: v1
+#kind: PersistentVolumeClaim
+#metadata:
+#  name: tempo-nfs-pvc
+#  namespace: monitoring
+#spec:
+#  accessModes:
+#    - ReadWriteMany
+#  resources:
+#    requests:
+#      storage: 100Gi
