@@ -35,31 +35,25 @@ spec:
             level = "info"
             format = "logfmt"
           }
-          otelcol.receiver.otlp "example" {
+          otelcol.receiver.otlp "otlp_receiver" {
             grpc {
-              endpoint = "127.0.0.1:4317"
+              endpoint = "0.0.0.0:4317"
             }
 
             http {
-              endpoint = "127.0.0.1:4318"
+              endpoint = "0.0.0.0:4318"
             }
 
             output {
-              metrics = [otelcol.processor.batch.example.input]
-              logs    = [otelcol.processor.batch.example.input]
-              traces  = [otelcol.processor.batch.example.input]
+              traces  = [otelcol.exporter.otlp.tempo]
             }
           }
-          otelcol.processor.batch "example" {
-            output {
-              metrics = [otelcol.exporter.otlp.default.input]
-              logs    = [otelcol.exporter.otlp.default.input]
-              traces  = [otelcol.exporter.otlp.default.input]
-            }
-          }
-
-          otelcol.exporter.otlp "default" {
+          
+          otelcol.exporter.otlp "tempo" {
             client {
-              endpoint = "my-otlp-grpc-server:4317"
+              endpoint = "tempo:4317"
+              tls {
+                insecure = true
+              }
             }
           }
