@@ -4,3 +4,4 @@ resources:
   - namespace.yaml
   - helm-repos.yaml
   - kube-prometheus-stack.yaml
+  - tempo.yaml
