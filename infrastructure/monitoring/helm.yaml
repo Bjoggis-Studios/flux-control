@@ -1,17 +1,68 @@
-apiVersion: source.toolkit.fluxcd.io/v1
-kind: HelmRepository
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
 metadata:
-  name: grafana
+  name: monitoring
   namespace: monitoring
 spec:
   interval: 1m
-  url: https://grafana.github.io/helm-charts
----
-apiVersion: source.toolkit.fluxcd.io/v1
-kind: HelmRepository
-metadata:
-  name: prometheus-community
-  namespace: monitoring
-spec:
-  interval: 1m
-  url: https://prometheus-community.github.io/helm-charts
+  timeout: 10m
+  chart:
+    spec:
+      chart: kube-prometheus-stack
+      version: 72.6.2
+      sourceRef:
+        kind: HelmRepository
+        name: prometheus-community
+        namespace: monitoring
+      interval: 1m
+  values:
+    prometheus:
+      prometheusSpec:
+        # Enable remote write receiver for Tempo metrics (default: false)
+        enableRemoteWriteReceiver: true
+        # Enable exemplar storage for metrics-traces linking (default: [])
+        enableFeatures:
+          - exemplar-storage
+          - native-histograms
+
+      grafana:
+        # Enable anonymous access for demo (default: requires login)
+        grafana.ini:
+          auth.anonymous:
+            enabled: true
+            org_role: Admin
+          auth:
+            disable_login_form: true
+          feature_toggles:
+            enable: traceqlEditor
+
+        # Add trace exploration plugin (default: no plugins)
+        plugins:
+          - grafana-exploretraces-app
+
+        # Connect Grafana to Tempo (default: only Prometheus datasource)
+        datasources:
+          datasources.yaml:
+            apiVersion: 1
+            datasources:
+              - name: Tempo
+                type: tempo
+                access: proxy
+                url: http://tempo:3100
+                uid: tempo
+                jsonData:
+                  httpMethod: GET
+                  serviceMap:
+                    datasourceUid: prometheus
+                  tracesToMetrics:
+                    datasourceUid: prometheus
+
+      # Disable components for simpler demo setup
+      alertmanager:
+        enabled: false  # Default: true
+
+      nodeExporter:
+        enabled: false  # Default: true
+
+      prometheus-node-exporter:
+        enabled: false  # Default: true
