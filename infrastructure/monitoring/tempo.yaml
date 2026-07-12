@@ -32,21 +32,21 @@ spec:
       enabled: true
       existingClaim: tempo-nfs-pvc
 
-      storage:
-        trace:
-          backend: local
-          local:
-            path: /var/tempo/traces
-          wal:
-            path: /var/tempo/wal
+    storage:
+      trace:
+        backend: local
+        local:
+          path: /var/tempo/traces
+        wal:
+          path: /var/tempo/wal
 
 ---
 apiVersion: v1
 kind: PersistentVolume
 metadata:
   name: tempo-nfs-pv
-  namespace: monitoring
 spec:
+  storageClassName: "nfs-tempo"
   capacity:
     storage: 100Gi
   accessModes:
@@ -55,14 +55,15 @@ spec:
     server: qnas.tailscale.svc.cluster.local # Replace with your NAS IP
     path: /prod/talos/monitoring/tempo  # Replace with your NAS share path
 ---
-#apiVersion: v1
-#kind: PersistentVolumeClaim
-#metadata:
-#  name: tempo-nfs-pvc
-#  namespace: monitoring
-#spec:
-#  accessModes:
-#    - ReadWriteMany
-#  resources:
-#    requests:
-#      storage: 100Gi
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: tempo-nfs-pvc
+  namespace: monitoring
+spec:
+  storageClassName: "nfs-tempo"
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 100Gi
