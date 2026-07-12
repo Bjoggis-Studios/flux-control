@@ -59,10 +59,10 @@ spec:
 
       # Disable components for simpler demo setup
       alertmanager:
-        enabled: false  # Default: true
+        enabled: true  # Default: true
 
       nodeExporter:
-        enabled: false  # Default: true
+        enabled: true  # Default: true
 
       prometheus-node-exporter:
-        enabled: false  # Default: true
+        enabled: true  # Default: true
