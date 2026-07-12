@@ -44,8 +44,9 @@ spec:
       trace:
         backend: s3
         s3:
-          bucket: bucket01                        # store traces in this bucket
-          endpoint: qnas.tailscale.svc.cluster.local  # api endpoint
+          bucket: bucket01
+          endpoint: qnas.tailscale.svc.cluster.local
           insecure: true
+          s3_force_path_style: true
         wal:
           path: /var/tempo/wal
