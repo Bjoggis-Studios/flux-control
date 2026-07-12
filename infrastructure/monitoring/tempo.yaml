@@ -19,7 +19,7 @@ spec:
     tempo:
       metricsGenerator:
         enabled: true
-        remoteWriteUrl: "http://prometheus:9090/api/v1/write"
+        remoteWriteUrl: "http://kube-prometheus-stack-prometheus:9090/api/v1/write"
 
       # Enable service graphs and span metrics
       overrides:
