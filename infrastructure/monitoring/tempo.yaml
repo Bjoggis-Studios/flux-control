@@ -18,7 +18,7 @@ spec:
   values:
     tempo:
       # Specific commit for reproducibility
-      tag: main-814c1c6
+      tag: v2.10.7
 
       # Metrics generator - The key feature for traces → metrics integration
       metricsGenerator:
