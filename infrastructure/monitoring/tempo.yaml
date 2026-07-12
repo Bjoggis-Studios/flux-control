@@ -15,6 +15,15 @@ spec:
         name: grafana-community
         namespace: monitoring
       interval: 1m
+  valuesFrom:
+    - kind: Secret
+      name: tempo-bucket
+      valuesKey: username
+      targetPath: storage.trace.s3.access_key
+    - kind: Secret
+      name: tempo-bucket
+      valuesKey: password
+      targetPath: storage.trace.s3.secret_key
   values:
     tempo:
       metricsGenerator:
@@ -30,27 +39,12 @@ spec:
     # Enable persistence for realistic setup
     persistence:
       enabled: true
-      storageClassName: "nfs-tempo"
 
     storage:
       trace:
-        backend: local
-        local:
-          path: /var/tempo/traces
+        s3:
+          bucket: bucket01                        # store traces in this bucket
+          endpoint: qnas.tailscale.svc.cluster.local  # api endpoint
+          insecure: true
         wal:
           path: /var/tempo/wal
-
----
-apiVersion: v1
-kind: PersistentVolume
-metadata:
-  name: tempo-nfs-pv
-spec:
-  storageClassName: "nfs-tempo"
-  capacity:
-    storage: 100Gi
-  accessModes:
-    - ReadWriteMany
-  nfs:
-    server: qnas.tailscale.svc.cluster.local # Replace with your NAS IP
-    path: /prod/talos/monitoring/tempo  # Replace with your NAS share path

@@ -7,3 +7,4 @@ resources:
   - tempo.yaml
   - alloy.yaml
   - trace-generator.yaml
+  - secrets.yaml
