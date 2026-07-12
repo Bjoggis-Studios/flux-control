@@ -36,17 +36,17 @@ spec:
           metrics_generator:
             processors: [ service-graphs, span-metrics, local-blocks ]
 
-    # Enable persistence for realistic setup
-    persistence:
-      enabled: false
+      # Enable persistence for realistic setup
+      persistence:
+        enabled: false
 
-    storage:
-      trace:
-        backend: s3
-        s3:
-          bucket: bucket01
-          endpoint: qnas.tailscale.svc.cluster.local
-          insecure: true
-          s3_force_path_style: true
-        wal:
-          path: /var/tempo/wal
+      storage:
+        trace:
+          backend: s3
+          s3:
+            bucket: bucket01
+            endpoint: qnas.tailscale.svc.cluster.local
+            insecure: true
+            s3_force_path_style: true
+          wal:
+            path: /var/tempo/wal
