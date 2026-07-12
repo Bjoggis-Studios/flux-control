@@ -29,4 +29,4 @@ spec:
 
     # Enable persistence for realistic setup
     persistence:
-      enabled: true
+      enabled: false
