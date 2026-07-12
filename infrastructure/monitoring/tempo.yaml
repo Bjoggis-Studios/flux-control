@@ -9,18 +9,14 @@ spec:
   chart:
     spec:
       chart: tempo
-      version: 1.21.1
+      version: 2.2.3
       sourceRef:
         kind: HelmRepository
-        name: grafana
+        name: grafana-community
         namespace: monitoring
       interval: 1m
   values:
     tempo:
-      # Specific commit for reproducibility
-      tag: v2.10.7
-
-      # Metrics generator - The key feature for traces → metrics integration
       metricsGenerator:
         enabled: true
         remoteWriteUrl: "http://monitoring-kube-prometheus-prometheus:9090/api/v1/write"

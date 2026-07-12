@@ -10,6 +10,15 @@ spec:
 apiVersion: source.toolkit.fluxcd.io/v1
 kind: HelmRepository
 metadata:
+  name: grafana-community
+  namespace: monitoring
+spec:
+  interval: 1m
+  url: https://grafana-community.github.io/helm-charts
+---
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: HelmRepository
+metadata:
   name: prometheus-community
   namespace: monitoring
 spec:
