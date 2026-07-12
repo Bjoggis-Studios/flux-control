@@ -5,3 +5,4 @@ resources:
   - helm-repos.yaml
   - kube-prometheus-stack.yaml
   - tempo.yaml
+  - alloy.yaml
