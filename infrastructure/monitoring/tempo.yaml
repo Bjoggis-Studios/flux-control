@@ -30,7 +30,7 @@ spec:
     # Enable persistence for realistic setup
     persistence:
       enabled: true
-      existingClaim: tempo-nfs-pvc
+      storageClassName: "nfs-tempo"
 
     storage:
       trace:
@@ -54,16 +54,3 @@ spec:
   nfs:
     server: qnas.tailscale.svc.cluster.local # Replace with your NAS IP
     path: /prod/talos/monitoring/tempo  # Replace with your NAS share path
----
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: tempo-nfs-pvc
-  namespace: monitoring
-spec:
-  storageClassName: "nfs-tempo"
-  accessModes:
-    - ReadWriteMany
-  resources:
-    requests:
-      storage: 100Gi
