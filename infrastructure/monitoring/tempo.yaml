@@ -42,6 +42,7 @@ spec:
 
     storage:
       trace:
+        backend: s3
         s3:
           bucket: bucket01                        # store traces in this bucket
           endpoint: qnas.tailscale.svc.cluster.local  # api endpoint
