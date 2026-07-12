@@ -45,8 +45,8 @@ apiVersion: v1
 kind: PersistentVolume
 metadata:
   name: tempo-nfs-pv
+  namespace: monitoring
 spec:
-  storageClassName: "nfs-manual" # Set this explicitly
   capacity:
     storage: 100Gi
   accessModes:
@@ -63,7 +63,6 @@ metadata:
 spec:
   accessModes:
     - ReadWriteMany
-  storageClassName: "nfs-manual" # Leave empty for static PV binding
   resources:
     requests:
       storage: 100Gi
