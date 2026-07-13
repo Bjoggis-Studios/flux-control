@@ -4,7 +4,7 @@ resources:
   - namespace.yaml
   - helm-repos.yaml
   - kube-prometheus-stack.yaml
+  - secrets.yaml
   - tempo.yaml
   - alloy.yaml
   - trace-generator.yaml
-  - secrets.yaml
