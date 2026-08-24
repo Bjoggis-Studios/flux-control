@@ -1,0 +1,15 @@
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: nfs-test-tenant
+  namespace: flux-system
+spec:
+  interval: 1m
+  path: ./tenants/nfs-test
+  prune: true
+  retryInterval: 1m
+  serviceAccountName: kustomize-controller
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
+  timeout: 3m

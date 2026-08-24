@@ -1,0 +1,47 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: nfs-test-pvc
+  namespace: nfs-test
+spec:
+  accessModes:
+    - ReadWriteMany
+  storageClassName: nfs-csi
+  resources:
+    requests:
+      storage: 1Gi
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nfs-test
+  namespace: nfs-test
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nfs-test
+  template:
+    metadata:
+      labels:
+        app: nfs-test
+    spec:
+      containers:
+        - name: nfs-test
+          image: busybox:1.36
+          command:
+            - /bin/sh
+            - -c
+            - |
+              echo "pod $(hostname) started at $(date)" >> /data/heartbeat.txt
+              while true; do
+                echo "$(date) - $(hostname)" >> /data/heartbeat.txt
+                sleep 30
+              done
+          volumeMounts:
+            - name: nfs-data
+              mountPath: /data
+      volumes:
+        - name: nfs-data
+          persistentVolumeClaim:
+            claimName: nfs-test-pvc
