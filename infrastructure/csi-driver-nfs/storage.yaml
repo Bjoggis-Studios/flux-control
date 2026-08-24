@@ -4,7 +4,7 @@ metadata:
   name: nfs-csi
 provisioner: nfs.csi.k8s.io
 parameters:
-  server: qnas.tailscale.svc.cluster.local
+  server: qnas.pancake-vibe.ts.net
   share: /prod-talos
 reclaimPolicy: Retain
 volumeBindingMode: Immediate
