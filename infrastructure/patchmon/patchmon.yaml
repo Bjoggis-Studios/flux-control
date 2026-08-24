@@ -1,0 +1,263 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: patchmon-config
+  namespace: patchmon
+data:
+  # Must match exactly the URL your users open PatchMon on.
+  CORS_ORIGIN: "https://patchmon.jonasandersen.dev"
+  POSTGRES_HOST: "patchmon-db"
+  POSTGRES_USER: "patchmon_user"
+  POSTGRES_DB: "patchmon_db"
+  REDIS_HOST: "patchmon-redis"
+  REDIS_PORT: "6379"
+  REDIS_DB: "0"
+  PORT: "3000"
+  # Required when running behind an Ingress controller.
+  TRUST_PROXY: "true"
+  TZ: "UTC"
+---
+# ------------------------------------------------------------------ PostgreSQL
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: patchmon-db-data
+  namespace: patchmon
+spec:
+  accessModes: [ReadWriteOnce]
+  storageClassName: nfs-csi
+  resources:
+    requests:
+      storage: 8Gi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: patchmon-db
+  namespace: patchmon
+spec:
+  type: ClusterIP
+  selector:
+    app.kubernetes.io/name: patchmon-db
+  ports:
+    - name: postgres
+      port: 5432
+      targetPort: postgres
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: patchmon-db
+  namespace: patchmon
+spec:
+  replicas: 1
+  # Never run two PostgreSQL pods against one ReadWriteOnce volume.
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: patchmon-db
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: patchmon-db
+    spec:
+      containers:
+        - name: postgres
+          image: postgres:17-alpine
+          ports:
+            - name: postgres
+              containerPort: 5432
+          env:
+            - name: POSTGRES_USER
+              valueFrom:
+                configMapKeyRef:
+                  name: patchmon-config
+                  key: POSTGRES_USER
+            - name: POSTGRES_DB
+              valueFrom:
+                configMapKeyRef:
+                  name: patchmon-config
+                  key: POSTGRES_DB
+            - name: POSTGRES_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: patchmon-secrets
+                  key: POSTGRES_PASSWORD
+            # Do not change these two settings without reading
+            # "The PostgreSQL data directory" below.
+            - name: PGDATA
+              value: /var/lib/postgresql/data/pgdata
+          volumeMounts:
+            - name: db-data
+              mountPath: /var/lib/postgresql/data
+          readinessProbe:
+            exec:
+              command:
+                - sh
+                - -c
+                - pg_isready -U "$POSTGRES_USER" -d "$POSTGRES_DB" -h localhost
+            initialDelaySeconds: 10
+            periodSeconds: 10
+          resources:
+            requests:
+              cpu: 100m
+              memory: 128Mi
+            limits:
+              memory: 512Mi
+      volumes:
+        - name: db-data
+          persistentVolumeClaim:
+            claimName: patchmon-db-data
+---
+# ----------------------------------------------------------------------- Redis
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: patchmon-redis-data
+  namespace: patchmon
+  annotations:
+    argocd.argoproj.io/sync-options: Prune=false,Delete=false
+spec:
+  accessModes: [ReadWriteOnce]
+  storageClassName: nfs-csi
+  resources:
+    requests:
+      storage: 1Gi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: patchmon-redis
+  namespace: patchmon
+spec:
+  selector:
+    app.kubernetes.io/name: patchmon-redis
+  ports:
+    - name: redis
+      port: 6379
+      targetPort: 6379
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: patchmon-redis
+  namespace: patchmon
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: patchmon-redis
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: patchmon-redis
+    spec:
+      containers:
+        - name: redis
+          image: redis:7-alpine
+          command: ["sh", "-c", "redis-server --requirepass \"$REDIS_PASSWORD\""]
+          env:
+            - name: REDIS_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: patchmon-secrets
+                  key: REDIS_PASSWORD
+          ports:
+            - name: redis
+              containerPort: 6379
+          volumeMounts:
+            - name: data
+              mountPath: /data
+          readinessProbe:
+            exec:
+              command:
+                - sh
+                - -c
+                - redis-cli --no-auth-warning -a "$REDIS_PASSWORD" ping
+            periodSeconds: 10
+          resources:
+            requests:
+              cpu: 50m
+              memory: 64Mi
+            limits:
+              memory: 256Mi
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: patchmon-redis-data
+---
+# ---------------------------------------------------------------------- Server
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: patchmon-server
+  namespace: patchmon
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: patchmon-server
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: patchmon-server
+    spec:
+      # Stable identity for the agent presence registry. Keep this, and give
+      # each server process a distinct value if several share one Redis.
+      hostname: patchmon-server
+      containers:
+        - name: server
+          image: ghcr.io/patchmon/patchmon-server:latest
+          ports:
+            - name: http
+              containerPort: 3000
+          envFrom:
+            - configMapRef:
+                name: patchmon-config
+            - secretRef:
+                name: patchmon-secrets
+          env:
+            # $(VAR) resolves against the envFrom entries above, so this
+            # assembles the URL from the ConfigMap and Secret values.
+            - name: DATABASE_URL
+              value: "postgresql://$(POSTGRES_USER):$(POSTGRES_PASSWORD)@$(POSTGRES_HOST):5432/$(POSTGRES_DB)"
+          startupProbe:
+            tcpSocket:
+              port: http
+            # The first start applies the schema migrations.
+            failureThreshold: 40
+            periodSeconds: 10
+          livenessProbe:
+            tcpSocket:
+              port: http
+            periodSeconds: 30
+          readinessProbe:
+            tcpSocket:
+              port: http
+            periodSeconds: 15
+          resources:
+            requests:
+              cpu: 100m
+              memory: 256Mi
+            limits:
+              memory: 1Gi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: patchmon-server
+  namespace: patchmon
+spec:
+  type: ClusterIP
+  selector:
+    app.kubernetes.io/name: patchmon-server
+  ports:
+    - name: http
+      port: 3000
+      targetPort: http
+---
