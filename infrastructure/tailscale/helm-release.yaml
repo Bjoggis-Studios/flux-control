@@ -41,4 +41,4 @@ metadata:
   name: tunnel-credentials
   namespace: tailscale
 spec:
-  itemPath: "vaults/dev/items/6ed2qjr3f3ikvykdumk52foukm"
+  itemPath: "vaults/xiek6hzwtlhwk6725ngjboftja/items/6ed2qjr3f3ikvykdumk52foukm"

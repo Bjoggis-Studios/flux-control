@@ -67,7 +67,7 @@ metadata:
   name: config-server-credentials
   namespace: common
 spec:
-  itemPath: "vaults/dev/items/vyrmenydnfnugdest54k2bg764"
+  itemPath: "vaults/xiek6hzwtlhwk6725ngjboftja/items/vyrmenydnfnugdest54k2bg764"
 ---
 apiVersion: onepassword.com/v1
 kind: OnePasswordItem
@@ -75,4 +75,4 @@ metadata:
   name: config-server-encrypt-key
   namespace: common
 spec:
-  itemPath: "vaults/dev/items/biovntdbcn33siro4gzw23t4cu"
+  itemPath: "vaults/xiek6hzwtlhwk6725ngjboftja/items/biovntdbcn33siro4gzw23t4cu"
