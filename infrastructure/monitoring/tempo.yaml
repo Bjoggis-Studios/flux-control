@@ -49,6 +49,6 @@ spec:
             insecure: true
             forcepathstyle: true
             signature_v2: true
-#            bucket_lookup_type: 2
+            bucket_lookup_type: path
           wal:
             path: /var/tempo/wal
