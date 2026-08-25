@@ -46,7 +46,7 @@ spec:
           s3:
             bucket: bucket01
             endpoint: qnas.pancake-vibe.ts.net:8010
-            insecure: false
+            insecure: true
             forcepathstyle: true
 #            bucket_lookup_type: 2
           wal:
