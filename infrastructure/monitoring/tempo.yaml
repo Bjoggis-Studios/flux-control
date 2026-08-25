@@ -19,11 +19,11 @@ spec:
     - kind: Secret
       name: tempo-bucket
       valuesKey: username
-      targetPath: storage.trace.s3.access_key
+      targetPath: tempo.storage.trace.s3.access_key
     - kind: Secret
       name: tempo-bucket
       valuesKey: password
-      targetPath: storage.trace.s3.secret_key
+      targetPath: tempo.storage.trace.s3.secret_key
   values:
     tempo:
       metricsGenerator:
@@ -48,6 +48,6 @@ spec:
             endpoint: qnas.pancake-vibe.ts.net:8010
             insecure: true
             forcepathstyle: true
-            signature_v2: true
+#            signature_v2: true
           wal:
             path: /var/tempo/wal
