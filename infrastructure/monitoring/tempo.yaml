@@ -48,6 +48,5 @@ spec:
             endpoint: qnas.pancake-vibe.ts.net:8010
             insecure: true
             forcepathstyle: true
-#            signature_v2: true
           wal:
             path: /var/tempo/wal
