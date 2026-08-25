@@ -48,6 +48,7 @@ spec:
             endpoint: qnas.pancake-vibe.ts.net:8010
             insecure: true
             forcepathstyle: true
+            list_objects_version: v1
 #            bucket_lookup_type: 2
           wal:
             path: /var/tempo/wal
