@@ -29,10 +29,10 @@ spec:
       # Enable anonymous access for demo (default: requires login)
       grafana.ini:
         auth.anonymous:
-          enabled: true
+          enabled: false
           org_role: Admin
         auth:
-          disable_login_form: true
+          disable_login_form: false
         feature_toggles:
           enable: traceqlEditor
 
