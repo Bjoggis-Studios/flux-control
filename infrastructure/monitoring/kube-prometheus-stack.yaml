@@ -26,6 +26,10 @@ spec:
           - native-histograms
 
     grafana:
+      persistence:
+        enabled: true
+        size: 5Gi
+        storageClassName: "nfs-csi"
       # Enable anonymous access for demo (default: requires login)
       grafana.ini:
         auth.anonymous:
