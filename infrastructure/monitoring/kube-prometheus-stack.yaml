@@ -56,6 +56,23 @@ spec:
                   datasourceUid: prometheus
                 tracesToMetrics:
                   datasourceUid: prometheus
+                # Jump from a trace's span to its logs in Loki
+                tracesToLogsV2:
+                  datasourceUid: loki
+
+            # Connect Grafana to the in-cluster Loki (default: no logs datasource)
+            - name: Loki
+              type: loki
+              access: proxy
+              url: http://loki-gateway.monitoring.svc.cluster.local
+              uid: loki
+              jsonData:
+                # Jump from a log line back to its trace in Tempo
+                derivedFields:
+                  - name: TraceID
+                    matcherRegex: '"trace_id":"(\w+)"'
+                    url: '$${__value.raw}'
+                    datasourceUid: tempo
 
     # Disable components for simpler demo setup
     alertmanager:

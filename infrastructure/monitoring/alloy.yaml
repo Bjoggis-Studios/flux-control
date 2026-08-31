@@ -20,6 +20,7 @@ spec:
       configMap:
         content: |
           // OTLP receiver configuration
+          // Fans out each signal to its own backend in the LGTM stack.
           otelcol.receiver.otlp "otlp_receiver" {
             grpc {
               endpoint = "0.0.0.0:4317"
@@ -28,17 +29,46 @@ spec:
               endpoint = "0.0.0.0:4318"
             }
             output {
-              traces = [otelcol.exporter.otlp.tempo.input]
+              traces  = [otelcol.exporter.otlp.tempo.input]
+              metrics = [otelcol.exporter.prometheus.to_prom.input]
+              logs    = [otelcol.exporter.loki.to_loki.input]
             }
           }
 
-          // OTLP exporter to Tempo
+          // ---------- TRACES -> Tempo ----------
           otelcol.exporter.otlp "tempo" {
             client {
               endpoint = "tempo:4317"
               tls {
                 insecure = true
               }
+            }
+          }
+
+          // ---------- METRICS -> Prometheus ----------
+          // Convert OTLP metrics into Prometheus samples...
+          otelcol.exporter.prometheus "to_prom" {
+            forward_to = [prometheus.remote_write.prom.receiver]
+          }
+
+          // ...then remote-write them to the kube-prometheus-stack Prometheus
+          // (enableRemoteWriteReceiver is already turned on for it).
+          prometheus.remote_write "prom" {
+            endpoint {
+              url = "http://kube-prometheus-stack-prometheus:9090/api/v1/write"
+            }
+          }
+
+          // ---------- LOGS -> Loki ----------
+          // Convert OTLP logs into the Loki format...
+          otelcol.exporter.loki "to_loki" {
+            forward_to = [loki.write.loki.receiver]
+          }
+
+          // ...then push them to the in-cluster Loki gateway.
+          loki.write "loki" {
+            endpoint {
+              url = "http://loki-gateway.monitoring.svc.cluster.local/loki/api/v1/push"
             }
           }
 

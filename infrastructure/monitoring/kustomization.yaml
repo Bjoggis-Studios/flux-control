@@ -6,5 +6,6 @@ resources:
   - kube-prometheus-stack.yaml
   - secrets.yaml
   - tempo.yaml
+  - loki.yaml
   - alloy.yaml
 #  - trace-generator.yaml

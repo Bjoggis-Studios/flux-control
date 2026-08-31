@@ -1,0 +1,70 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: loki
+  namespace: monitoring
+spec:
+  interval: 1m
+  timeout: 3m
+  chart:
+    spec:
+      chart: loki
+      version: 6.24.0
+      sourceRef:
+        kind: HelmRepository
+        name: grafana
+        namespace: monitoring
+      interval: 1m
+  values:
+    # Run Loki as a single binary for a simple in-cluster setup
+    deploymentMode: SingleBinary
+
+    loki:
+      # Disable multi-tenancy so pushes/queries need no X-Scope-OrgID header
+      auth_enabled: false
+      commonConfig:
+        replication_factor: 1
+      # Required schema config for recent Loki versions
+      schemaConfig:
+        configs:
+          - from: "2024-04-01"
+            store: tsdb
+            object_store: filesystem
+            schema: v13
+            index:
+              prefix: index_
+              period: 24h
+      storage:
+        type: filesystem
+      limits_config:
+        # Allow OTLP structured metadata coming from Alloy
+        allow_structured_metadata: true
+
+    singleBinary:
+      replicas: 1
+      persistence:
+        enabled: true
+        size: 10Gi
+
+    # Zero out the microservice-mode components (unused in SingleBinary)
+    read:
+      replicas: 0
+    write:
+      replicas: 0
+    backend:
+      replicas: 0
+
+    # Disable caches and self-monitoring for a lean demo setup
+    chunksCache:
+      enabled: false
+    resultsCache:
+      enabled: false
+    lokiCanary:
+      enabled: false
+    test:
+      enabled: false
+    monitoring:
+      selfMonitoring:
+        enabled: false
+        grafanaAgent:
+          installOperator: false
