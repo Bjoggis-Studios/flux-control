@@ -13,6 +13,7 @@ spec:
       labels:
         app: config-server
     spec:
+      serviceAccountName: config-server
       containers:
         - name: config-server
           image: bjoggis/config-server:v9
