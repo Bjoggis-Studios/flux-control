@@ -16,7 +16,7 @@ spec:
       serviceAccountName: config-server
       containers:
         - name: config-server
-          image: bjoggis/config-server:v9
+          image: bjoggis/config-server:v10
           ports:
             - containerPort: 8888
           readinessProbe:
