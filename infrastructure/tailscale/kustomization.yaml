@@ -10,3 +10,4 @@ resources:
   - external-bgg-minecraft.yaml
   - connector.yaml
   - nameserver.yaml
+  - rbac.yaml
