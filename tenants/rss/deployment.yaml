@@ -25,7 +25,7 @@ spec:
               protocol: TCP
           volumeMounts:
             - name: freshrss-data
-              mountPath: /var/www/FreshRSS
+              mountPath: /var/www/FreshRSS/data
       restartPolicy: Always
       volumes:
         - name: freshrss-data
