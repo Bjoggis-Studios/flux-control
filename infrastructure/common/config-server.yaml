@@ -31,22 +31,22 @@ spec:
             - name: ENCRYPT_KEY
               valueFrom:
                 secretKeyRef:
-                  name: config-server-encrypt-key
-                  key: password
+                  name: config-server-secrets
+                  key: encrypt-key
             - name: SPRING_CLOUD_CONFIG_JDBC_URL
               valueFrom:
                 secretKeyRef:
-                  name: config-server-credentials
+                  name: config-server-secrets
                   key: jdbc-url
             - name: SPRING_CLOUD_CONFIG_JDBC_USERNAME
               valueFrom:
                 secretKeyRef:
-                  name: config-server-credentials
+                  name: config-server-secrets
                   key: jdbc-username
             - name: SPRING_CLOUD_CONFIG_JDBC_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: config-server-credentials
+                  name: config-server-secrets
                   key: jdbc-password
 ---
 apiVersion: v1
@@ -61,19 +61,3 @@ spec:
   ports:
     - port: 8888
       targetPort: 8888
----
-apiVersion: onepassword.com/v1
-kind: OnePasswordItem
-metadata:
-  name: config-server-credentials
-  namespace: common
-spec:
-  itemPath: "vaults/xiek6hzwtlhwk6725ngjboftja/items/vyrmenydnfnugdest54k2bg764"
----
-apiVersion: onepassword.com/v1
-kind: OnePasswordItem
-metadata:
-  name: config-server-encrypt-key
-  namespace: common
-spec:
-  itemPath: "vaults/xiek6hzwtlhwk6725ngjboftja/items/biovntdbcn33siro4gzw23t4cu"

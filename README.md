@@ -33,6 +33,14 @@ Remember to also run tenants env files.
 kustomize build ./env/jonasandersen-no | envsubst | kubectl apply -f -
 ```
 
+## Initial secrets
+
+One secret to make config-server work correctly is needed for the cluster to work.
+
+Run create-config-server-secret.fish
+
+
+
 ## Flux
 
 ### Install
@@ -65,6 +73,8 @@ Optional flux command that supports image updating
 
 ### Update flux
 
+Flux is generally updated by renovate bot, but it might be needed to update manually sometimes.
+
 ```bash
 flux install --components-extra image-reflector-controller,image-automation-controller --export > ./clusters/cluster20/flux-system/gotk-components.yaml
 ```
@@ -89,9 +99,6 @@ If running from control node
 ```bash
 k3sup install --ip 172.19.181.254 --user gollien --ssh-key /home/gollien/.ssh/id_ed25519 --k3s-extra-args '--disable traefik' --context cluster00  
 ```
-
-# 1password
-https://developer.1password.com/docs/k8s/operator/?deployment-type=helm
 
 # Cloudflare tunnel
 ```bash
