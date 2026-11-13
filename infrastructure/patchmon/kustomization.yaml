@@ -3,5 +3,4 @@ kind: Kustomization
 resources:
   - namespace.yaml
   - secrets.yaml
-  - rbac.yaml
   - patchmon.yaml

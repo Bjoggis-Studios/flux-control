@@ -8,5 +8,4 @@ resources:
   - tempo.yaml
   - loki.yaml
   - alloy.yaml
-  - rbac.yaml
 #  - trace-generator.yaml
