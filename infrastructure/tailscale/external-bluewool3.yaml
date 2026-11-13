@@ -2,8 +2,8 @@ apiVersion: v1
 kind: Service
 metadata:
   annotations:
-    tailscale.com/tailnet-fqdn: bgg-minecraft.pancake-vibe.ts.net
-  name: bgg-minecraft
+    tailscale.com/tailnet-fqdn: bluewool3.pancake-vibe.ts.net
+  name: bluewool3
   namespace: tailscale
 spec:
   externalName: placeholder   # any value - will be overwritten by operator
