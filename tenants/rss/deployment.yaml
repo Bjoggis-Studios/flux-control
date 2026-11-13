@@ -23,5 +23,11 @@ spec:
           ports:
             - containerPort: 80
               protocol: TCP
+          volumeMounts:
+            - name: freshrss-data
+              mountPath: /var/www/FreshRSS
       restartPolicy: Always
-      
+      volumes:
+        - name: freshrss-data
+          persistentVolumeClaim:
+            claimName: freshrss-pvc
