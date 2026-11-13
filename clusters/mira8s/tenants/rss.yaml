@@ -7,7 +7,7 @@ spec:
   interval: 30s
   path: ./tenants/rss
   prune: true
-  retryInterval: 1m
+  retryInterval: 30s
   serviceAccountName: kustomize-controller
   sourceRef:
     kind: GitRepository
