@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
         - name: freshrss
-          image: freshrss/freshrss
+          image: freshrss/freshrss:1.30.4
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 80
