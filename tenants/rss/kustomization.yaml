@@ -3,6 +3,7 @@ kind: Kustomization
 resources:
   - namespace.yaml
   - storage.yaml
+  - imager.yml
   - deployment.yaml
   - service.yaml
   - ingress.yaml

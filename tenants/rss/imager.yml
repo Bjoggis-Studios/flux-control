@@ -1,0 +1,20 @@
+apiVersion: image.toolkit.fluxcd.io/v1
+kind: ImageRepository
+metadata:
+  name: freshrss
+  namespace: flux-system
+spec:
+  image: freshrss/freshrss
+  interval: 5m
+---
+apiVersion: image.toolkit.fluxcd.io/v1
+kind: ImagePolicy
+metadata:
+  name: freshrss
+  namespace: flux-system
+spec:
+  imageRepositoryRef:
+    name: freshrss/freshrss
+  policy:
+    semver:
+      range: 'v1.x.x'
